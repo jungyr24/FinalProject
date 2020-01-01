@@ -1,6 +1,7 @@
 package client.ui.userview;
 
 import client.data.dao.ProductModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -19,7 +20,14 @@ public class SelectedItemPnl extends JPanel {
 
     public SelectedItemPnl(ProductModel productModel) {
         this.productModel = productModel;
+        this.productModel = productModel;
 
+        if (this.productModel.IsSell == false) {
+            btnPlus.setEnabled(false);
+        }
+        if (this.itemCount < 0) {
+            btnMinus.setEnabled(false);
+        }
         itemNameAndMoneyPnl.setBounds(10, 10, 180, 50);
         itemNameAndMoneyPnl.setBackground(Color.pink);
         itemNameAndMoneyPnl.setLayout(new BorderLayout());
