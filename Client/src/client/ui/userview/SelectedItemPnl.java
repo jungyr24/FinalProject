@@ -18,7 +18,6 @@ public class SelectedItemPnl extends JPanel {
     public ProductModel productModel;
 
     public SelectedItemPnl(ProductModel productModel) {
-        setBounds(10, 10, 370, 50);
         this.productModel = productModel;
 
         itemNameAndMoneyPnl.setBounds(10, 10, 180, 50);

@@ -41,7 +41,7 @@ public class UserViewImpl implements UserView {
 
 
         // selectedListPnl w 315, h 500
-        selectedListPnl.setLayout(null);
+        selectedListPnl.setLayout(new GridLayout(50, 1, 3, 3));
         selectedListPnl.setBackground(Color.green);
         JScrollPane selectedListPnlScroll = new JScrollPane(selectedListPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
