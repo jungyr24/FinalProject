@@ -210,7 +210,7 @@ public class AdminViewImpl implements AdminView {
         CURRENT_INGRDNT_HOLDER.model = new DefaultTableModel();
         CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.model);
 
-
+        
 
         CURRENT_INGRDNT_HOLDER.table.updateUI();
     }
