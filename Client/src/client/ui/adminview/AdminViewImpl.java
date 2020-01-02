@@ -74,13 +74,13 @@ public class AdminViewImpl implements AdminView {
 
         // 버튼 set
         btnTotalMoney.setFont(new Font("맑은고딕", Font.PLAIN, 30));
-        btnCurrentItems.setFont(new Font("맑은고딕", Font.PLAIN, 30));
-        btnBuyItem.setFont(new Font("맑은고딕", Font.PLAIN, 30));
+        btnCurrentIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 30));
+        btnBuyIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 30));
         btnAddItem.setFont(new Font("맑은고딕", Font.PLAIN, 30));
 
         btnAdminWhatToDo.add(btnTotalMoney);
-        btnAdminWhatToDo.add(btnCurrentItems);
-        btnAdminWhatToDo.add(btnBuyItem);
+        btnAdminWhatToDo.add(btnCurrentIngredients);
+        btnAdminWhatToDo.add(btnBuyIngredients);
         btnAdminWhatToDo.add(btnAddItem);
         adminStartPanel.add(btnAdminWhatToDo, BorderLayout.CENTER);
 
@@ -223,8 +223,8 @@ public class AdminViewImpl implements AdminView {
         btnAdminClient.addActionListener(listener);
         btnBack.addActionListener(listener);
         btnTotalMoney.addActionListener(listener);
-        btnCurrentItems.addActionListener(listener);
-        btnBuyItem.addActionListener(listener);
+        btnCurrentIngredients.addActionListener(listener);
+        btnBuyIngredients.addActionListener(listener);
         btnAddItem.addActionListener(listener);
     }
 }

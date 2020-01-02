@@ -23,7 +23,9 @@ public class CardLayoutMain extends JFrame {
 
         tab.add(UserView.startPnl, "start");
         tab.add(AdminView.adminStartPanel, "admin");
-
+        tab.add(AdminView.totalMoneyPnl, "btnTotalMoney");
+        tab.add(AdminView.currentIngredientsPnl, "btnCurrentIngredients");
+        tab.add(AdminView.buyIngredientsPnl, "btnBuyIngredients");
         cardLayout.show(tab, "start");
 
         add(tab, BorderLayout.CENTER);

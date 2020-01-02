@@ -57,6 +57,15 @@ public class Controller implements ActionListener {
                 cardLayoutMain.changeDialog("start");
             }
             changeDialogFlag = !changeDialogFlag;
+        } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) {
+            cardLayoutMain.changeDialog("btnCurrentItems");
+        } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) {
+            cardLayoutMain.changeDialog("btnBuyIngredients");
+        } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {
+            cardLayoutMain.changeDialog("btnTotalMoney");
+        } else if (cardLayoutMain.adminView.btnBackTotalMoney.equals(obj) || cardLayoutMain.adminView.btnBackBuyIngredients.equals(obj)
+                || cardLayoutMain.adminView.btnBackCurrentIngredients.equals(obj)) {
+            cardLayoutMain.changeDialog("admin");
         } else {
             cardLayoutMain.userView.itemLists.forEach(item ->
             {
