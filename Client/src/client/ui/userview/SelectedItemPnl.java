@@ -68,6 +68,10 @@ public class SelectedItemPnl extends JPanel {
         } else return false;
     }
 
+    public void updateItemCount() {
+        itemCount = 1;
+        lblItemQuantity.setText(String.valueOf(itemCount));
+    }
 
     public void addListener(ActionListener listener) {
         if (btnMinus.getActionListeners().length == 0)
