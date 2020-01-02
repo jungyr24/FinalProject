@@ -32,7 +32,6 @@ public class Controller implements ActionListener {
                 cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
                 cardLayoutMain.userView.addListener(Controller.this::actionPerformed);
                 cardLayoutMain.adminView.addAdminListener(Controller.this::actionPerformed);
-
             }
 
             @Override
@@ -44,7 +43,7 @@ public class Controller implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
+    public synchronized void actionPerformed(ActionEvent actionEvent) {
         Object obj = actionEvent.getSource();
         if (cardLayoutMain.userView.btnPay.equals(obj)) {
 

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class UserViewImpl implements UserView {
     boolean isExist = false;
@@ -97,11 +98,13 @@ public class UserViewImpl implements UserView {
 
     @Override
     public void updateSelectedLists(ProductModel productModel) { // 선택된 상품 목록
+        AtomicInteger totalMoney = new AtomicInteger();
         selectedItemLists.forEach(item -> {
             if (productModel.PrName == item.productModel.PrName) {
                 item.productModel.PrNumber += 1;
                 isExist = true;
             }
+            totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount + 1);
         });
 
         if (isExist) {
@@ -117,6 +120,7 @@ public class UserViewImpl implements UserView {
             selectedListPnl.add(item);
             selectedListPnl.updateUI();
         }
+        lblTotalMoney.setText("총 금액 : " + totalMoney);
     }
 
 
@@ -137,6 +141,10 @@ public class UserViewImpl implements UserView {
         lblTotalMoney.setText(lblTotalMoney.getText() + money);
     }
 
+    @Override
+    public void plusItemCount() {
+
+    }
 
     @Override
     public synchronized void addListener(ActionListener listener) {
