@@ -2,10 +2,7 @@ package client.data.datasource;
 
 import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
-import client.data.datasource.callback.GetTableCallback;
-import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
-import client.data.datasource.callback.TotalMoneyCallback;
 import client.util.JsonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -62,7 +59,7 @@ public class ServerConnection {
         }).start();
     }
 
-    public void selectItem(ProductModel item, SelectItemCallback callback) {
+    public void selectItem(ProductModel item, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("select", item.PrCode);
         send(jsonObject.toString());
@@ -83,7 +80,7 @@ public class ServerConnection {
         }).start();
     }
 
-    public void minusItem(ProductModel item, SelectItemCallback callback) {
+    public void minusItem(ProductModel item, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("minus", item.PrCode);
         send(jsonObject.toString());
@@ -105,7 +102,7 @@ public class ServerConnection {
         ).start();
     }
 
-    public void exitItem(ProductModel item, int itemCount, SelectItemCallback callback) {
+    public void exitItem(ProductModel item, int itemCount, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("exit", item.PrCode);
         jsonObject.addProperty("count", itemCount);
@@ -135,7 +132,7 @@ public class ServerConnection {
     }
 
 
-    public void totalMoney(TotalMoneyCallback callback) {
+    public void totalMoney(ServerConnectionCallback.TotalMoneyCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("total", 0);
         send(jsonObject.toString());
@@ -159,7 +156,7 @@ public class ServerConnection {
 
     }
 
-    public void currentIngredients(GetTableCallback callback) {
+    public void currentIngredients(ServerConnectionCallback.GetTableCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("ingredient", 0);
         send(jsonObject.toString());

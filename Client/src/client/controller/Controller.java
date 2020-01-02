@@ -3,7 +3,6 @@ package client.controller;
 import client.data.Repository;
 import client.data.dao.ProductModel;
 import client.data.datasource.callback.ServerConnectionCallback;
-import client.data.datasource.callback.TotalMoneyCallback;
 import client.ui.CardLayoutMain;
 import kotlin.jvm.Volatile;
 
@@ -71,7 +70,7 @@ public class Controller implements ActionListener {
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) { // 총 매출
             cardLayoutMain.changeDialog("TotalMoney");
 
-            repository.totalMoney(new TotalMoneyCallback() {
+            repository.totalMoney(new ServerConnectionCallback.TotalMoneyCallback() {
                 @Override
                 public void success(Vector<ProductModel> lists, int totalMoney) {
                     cardLayoutMain.adminView.totalMoneyTable(lists, totalMoney);
