@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CardLayoutMain extends JFrame {
-    CardLayout cardLayout;
-    Container tab;
     public UserView userView;
     public AdminView adminView;
+    CardLayout cardLayout;
+    Container tab;
 
     public CardLayoutMain(UserView userView, AdminView adminView) {
         setResizable(false);

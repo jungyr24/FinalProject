@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 
 public class SelectedItemPnl extends JPanel {
 
+    public JButton btnMinus = new JButton("-"), btnPlus = new JButton("+"), btnX = new JButton("x");
+    public int itemCount = 1;
+    public ProductModel productModel;
     JPanel itemNameAndMoneyPnl = new JPanel();
     JLabel lblSelectedItemName = new JLabel();
     JLabel lblSelectedItemPrice = new JLabel();
     JPanel itemQuantityPnl = new JPanel();
-    public JButton btnMinus = new JButton("-"), btnPlus = new JButton("+"), btnX = new JButton("x");
-    public int itemCount = 1;
     JLabel lblItemQuantity = new JLabel();
-    public ProductModel productModel;
 
     public SelectedItemPnl(ProductModel productModel) {
         this.productModel = productModel;

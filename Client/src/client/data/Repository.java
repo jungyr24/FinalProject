@@ -21,5 +21,4 @@ public interface Repository {
     void totalMoney(ServerConnectionCallback.TotalMoneyCallback callback);
 
 
-
 }
