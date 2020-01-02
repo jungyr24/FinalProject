@@ -24,10 +24,10 @@ public class CardLayoutMain extends JFrame {
 
         tab.add(UserView.startPnl, "Start");
         tab.add(AdminView.adminStartPanel, "Admin");
-        tab.add(AdminView.totalMoneyPnl, "TotalMoney");
-        tab.add(AdminView.currentIngredientsPnl, "CurrentIngredients");
-        tab.add(AdminView.buyIngredientsPnl, "BuyIngredients");
-        tab.add(AdminView.addItemPnl, "AddItem");
+        tab.add(AdminView.TOTAL_MONEY_HOLDER.totalMoneyPnl, "TotalMoney");
+        tab.add(AdminView.CURRENT_INGRDNT_HOLDER.currentIngredientsPnl, "CurrentIngredients");
+        tab.add(AdminView.BUY_INGREDIENTS_HOLDER.buyIngredientsPnl, "BuyIngredients");
+        tab.add(AdminView.ADD_ITEM_HOLDER.addItemPnl, "AddItem");
 
         cardLayout.show(tab, "Start");
 

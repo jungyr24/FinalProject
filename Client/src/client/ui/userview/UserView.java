@@ -18,7 +18,7 @@ public interface UserView {
     AtomicInteger totalMoney = new AtomicInteger();
 
     void updateItemLists(Vector<ProductModel> lists);
-    
+
     void updateMoney();
 
     void updateSelectedLists(ProductModel productModel);
