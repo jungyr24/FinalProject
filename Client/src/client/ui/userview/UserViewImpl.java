@@ -100,24 +100,22 @@ public class UserViewImpl implements UserView {
     public void updateSelectedLists(ProductModel productModel) { // 선택된 상품 목록
         AtomicInteger totalMoney = new AtomicInteger();
         selectedItemLists.forEach(item -> {
-            if (productModel.PrName == item.productModel.PrName) {
-                item.productModel.PrNumber += 1;
+            if (productModel.PrName.equals(item.productModel.PrName)) {
                 isExist = true;
             }
             totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount + 1);
         });
 
-        if (isExist) {
+        if (isExist) { //이름이 같은 친구가 있으면 새로 그리기
             selectedListPnl.removeAll();
-            selectedItemLists.forEach(item -> {
-                selectedListPnl.add(item);
-            });
+            selectedItemLists.forEach(selectedListPnl::add);
             selectedListPnl.updateUI();
             isExist = false;
-        } else {
+        } else { //이름이 같은 친구가 없으면 새로 만들어서 넣어주기
+            selectedListPnl.removeAll();
             SelectedItemPnl item = new SelectedItemPnl(productModel);
             selectedItemLists.add(item);
-            selectedListPnl.add(item);
+            selectedItemLists.forEach(selectedListPnl::add);
             selectedListPnl.updateUI();
         }
         lblTotalMoney.setText("총 금액 : " + totalMoney);
@@ -142,8 +140,8 @@ public class UserViewImpl implements UserView {
     }
 
     @Override
-    public void plusItemCount() {
-
+    public void plusItemCount(SelectedItemPnl item) {
+        item.addBtnClicked();
     }
 
     @Override

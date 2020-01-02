@@ -70,6 +70,7 @@ public class Controller implements ActionListener {
             {
                 if (obj.equals(item.btnItem)) {
                     repository.selectItem(item.productModel, (productModelVector) -> {
+                        System.out.println("selectItem 호출");
                         updateItemView(item.productModel, productModelVector);
                     });
 
@@ -82,7 +83,9 @@ public class Controller implements ActionListener {
                     });
                 } else if (obj.equals(item.btnPlus)) {
                     repository.selectItem(item.productModel, (productModelVector) -> {
+                        System.out.println("plus 호출");
                         updateUserView(item, productModelVector);
+                        cardLayoutMain.userView.plusItemCount(item);
                     });
                 } else if (obj.equals(item.btnX)) {
                     repository.exitItem(item.productModel, item.itemCount, (productModelVector) -> {

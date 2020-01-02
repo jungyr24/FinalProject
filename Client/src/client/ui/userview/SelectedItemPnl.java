@@ -56,10 +56,23 @@ public class SelectedItemPnl extends JPanel {
 
     }
 
+    public void addBtnClicked() {
+        itemCount++;
+        lblItemQuantity.setText(String.valueOf(itemCount));
+    }
+
+    public void minusBtnClicked() {
+
+    }
+
+
     public void addListener(ActionListener listener) {
-        btnMinus.addActionListener(listener);
-        btnPlus.addActionListener(listener);
-        btnX.addActionListener(listener);
+        if (btnMinus.getActionListeners().length == 0)
+            btnMinus.addActionListener(listener);
+        if (btnPlus.getActionListeners().length == 0)
+            btnPlus.addActionListener(listener);
+        if (btnX.getActionListeners().length == 0)
+            btnX.addActionListener(listener);
     }
 
 }

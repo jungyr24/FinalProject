@@ -29,7 +29,7 @@ public interface UserView {
 
     void updateTotalMoney(String money);
 
-    void plusItemCount();
+    void plusItemCount(SelectedItemPnl item);
 
     void addListener(ActionListener listener);
 
