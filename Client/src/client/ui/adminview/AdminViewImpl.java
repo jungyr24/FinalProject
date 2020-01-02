@@ -68,7 +68,7 @@ public class AdminViewImpl implements AdminView {
         TOTAL_MONEY_HOLDER.totalSalesPnl.add(TOTAL_MONEY_HOLDER.lblTotalSalesMoney);
 
         JScrollPane jsp = new JScrollPane(TOTAL_MONEY_HOLDER.table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        jsp.setBounds(40,70,1000,400);
+        jsp.setBounds(40, 70, 1000, 400);
 
         // btnBack
         TOTAL_MONEY_HOLDER.btnBackTotalMoney.setBounds(940, 580, 100, 50);
@@ -76,7 +76,7 @@ public class AdminViewImpl implements AdminView {
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(jsp);
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.btnBackTotalMoney);
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.totalSalesPnl);
-
+        TOTAL_MONEY_HOLDER.totalMoneyPnl.updateUI();
     }
 
 
@@ -213,13 +213,13 @@ public class AdminViewImpl implements AdminView {
     public void totalMoneyTable(Vector<ProductModel> lists, int totalMoney) {
         TOTAL_MONEY_HOLDER.model = new DefaultTableModel(TOTAL_MONEY_HOLDER.colTotalMoney, 0);
         TOTAL_MONEY_HOLDER.table = new JTable(TOTAL_MONEY_HOLDER.model);
-        for (ProductModel productModel: lists) {
+        for (ProductModel productModel : lists) {
             TOTAL_MONEY_HOLDER.rowTotalMoney = new Vector<>();
             TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(Integer.toString(productModel.PrCode));
             TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(productModel.PrName);
             TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(Integer.toString(productModel.PrPrice));
             TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(Integer.toString(productModel.PrNumber));
-            TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(Integer.toString(productModel.PrNumber*productModel.PrPrice));
+            TOTAL_MONEY_HOLDER.rowTotalMoney.addElement(Integer.toString(productModel.PrNumber * productModel.PrPrice));
 
             TOTAL_MONEY_HOLDER.model.addRow(TOTAL_MONEY_HOLDER.rowTotalMoney);
         }
