@@ -23,9 +23,11 @@ public interface UserView {
 
     void updateSelectedLists(ProductModel productModel);
 
-    void updateTotalMoney(String money);
+    boolean plusItemCount(SelectedItemPnl item);
 
-    void plusItemCount();
+    boolean minusItemCount(SelectedItemPnl item);
+
+    void removeItem(SelectedItemPnl item);
 
     void addListener(ActionListener listener);
 

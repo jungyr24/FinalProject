@@ -105,23 +105,24 @@ public class UserViewImpl implements UserView {
     public void updateSelectedLists(ProductModel productModel) { // 선택된 상품 목록
         AtomicInteger totalMoney = new AtomicInteger();
         selectedItemLists.forEach(item -> {
-            if (productModel.PrName == item.productModel.PrName) {
-                item.productModel.PrNumber += 1;
+            if (productModel.PrName.equals(item.productModel.PrName)) {
 
                 isExist = true;
             }
-            totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount + 1);
+            totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount);
         });
-        if (isExist) {
+
+        if (isExist) { //이름이 같은 친구가 있으면 새로 그리기
             selectedListPnl.removeAll();
-            selectedItemLists.forEach(item -> {
-                selectedListPnl.add(item);
-                selectedListPnl.updateUI();
-            });
-        } else {
+            selectedItemLists.forEach(selectedListPnl::add);
+            selectedListPnl.updateUI();
+            isExist = false;
+        } else { //이름이 같은 친구가 없으면 새로 만들어서 넣어주기
+            selectedListPnl.removeAll();
+
             SelectedItemPnl item = new SelectedItemPnl(productModel);
             selectedItemLists.add(item);
-            selectedListPnl.add(item);
+            selectedItemLists.forEach(selectedListPnl::add);
             selectedListPnl.updateUI();
         }
 
@@ -133,30 +134,48 @@ public class UserViewImpl implements UserView {
 
 
     @Override
-    public void updateTotalMoney(String money) { // TODO 총 금액
-        lblTotalMoney.setText(lblTotalMoney.getText() + money);
+    public boolean plusItemCount(SelectedItemPnl item) {
+        boolean returnValue = false;
+        for (ItemInfoPnl list : itemLists) {
+            if (list.productModel.PrName.equals(item.productModel.PrName)) {
+                if (list.productModel.IsSell) {
+                    item.addBtnClicked();
+                    returnValue = true;
+                    break;
+                }
+            }
+        }
+        return returnValue;
     }
 
     @Override
-    public void plusItemCount() {
-
+    public boolean minusItemCount(SelectedItemPnl item) {
+        return item.minusBtnClicked();
     }
 
     @Override
-    public synchronized void addListener(ActionListener listener) {
+    public void removeItem(SelectedItemPnl item) {
+        selectedListPnl.remove(item);
+        System.out.println(selectedItemLists.remove(item.productModel));
+        item.updateItemCount();
+        selectedListPnl.updateUI();
+    }
+
+    @Override
+    public  void addListener(ActionListener listener) {
         btnAdminClient.addActionListener(listener); // Manager <-> User Switch Button
         btnPay.addActionListener(listener); // 구매 버튼
     }
 
     @Override
-    public synchronized void addItemListListener(ActionListener listener) {
+    public  void addItemListListener(ActionListener listener) {
         itemLists.forEach(item -> {
             item.addListener(listener);
         });
     }
 
     @Override
-    public synchronized void addSelectedItemListener(ActionListener listener) {
+    public  void addSelectedItemListener(ActionListener listener) {
         selectedItemLists.forEach(selectedItem -> {
             selectedItem.addListener(listener);
         });
