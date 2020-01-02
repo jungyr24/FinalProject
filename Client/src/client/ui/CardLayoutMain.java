@@ -13,6 +13,7 @@ public class CardLayoutMain extends JFrame {
     public AdminView adminView;
 
     public CardLayoutMain(UserView userView, AdminView adminView) {
+        setResizable(false);
         cardLayout = new CardLayout();
         tab = new JPanel();
         tab.setSize(1100, 700);

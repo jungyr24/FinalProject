@@ -98,6 +98,7 @@ public class Controller implements ActionListener {
         }
     }
 
+
     private synchronized void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
         cardLayoutMain.userView.updateSelectedLists(productModel);
         cardLayoutMain.userView.updateItemLists(productModelVector);

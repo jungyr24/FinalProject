@@ -158,16 +158,35 @@ public class AdminViewImpl implements AdminView {
         lblTitleBuyIngredients.setBounds(480, 10, 200, 30);
 
         // combo box
+        String[] str1 = {"재고"};
 
 
         // 재고 수량 label
-
+        lblQuantityToAdd.setBounds(100, 250, 100, 70);
+        tfQuantityToAdd.setBounds(250, 250, 250, 70);
+        buyIngredientsPnl.add(lblQuantityToAdd);
+        buyIngredientsPnl.add(tfQuantityToAdd);
 
         // 등록, 수정, 삭제 btn
-
+        btnInsert.setBounds(110,350,100,50);
+        btnModify.setBounds(220,350,100,50);
+        btnDelete.setBounds(330,350,100,50);
+        buyIngredientsPnl.add(btnInsert);
+        buyIngredientsPnl.add(btnModify);
+        buyIngredientsPnl.add(btnDelete);
 
         // 총액감소 label
+        decreaseMoneyPnl.setLayout(null);
+        decreaseMoneyPnl.setBounds(100,410,350,100);
+        decreaseMoneyPnl.setBackground(Color.orange);
+        buyIngredientsPnl.add(decreaseMoneyPnl);
 
+        JLabel lblDecreaseTotalMoney = new JLabel("총 액 ");
+        lblDecreaseTotalMoney.setBounds(50,420,100,50);
+        // TODO: 2020-01-02
+        decreaseMoneyPnl.add(lblDecreaseTotalMoney);
+
+        buyIngredientsPnl.add(lblDecreaseTotalMoney);
 
         // table
         JPanel tablePnl = new JPanel();

@@ -15,7 +15,7 @@ public class SelectedItemPnl extends JPanel {
     JPanel itemQuantityPnl = new JPanel();
     public JButton btnMinus = new JButton("-"), btnPlus = new JButton("+"), btnX = new JButton("x");
     public int itemCount = 1;
-    JLabel lblItemQuantity = new JLabel(Integer.toString(itemCount));
+    JLabel lblItemQuantity = new JLabel();
     public ProductModel productModel;
 
     public SelectedItemPnl(ProductModel productModel) {
@@ -24,7 +24,7 @@ public class SelectedItemPnl extends JPanel {
         if (!this.productModel.IsSell) {
             btnPlus.setEnabled(false);
         }
-        if (this.itemCount < 0) {
+        if (productModel.PrNumber < 0) {
             btnMinus.setEnabled(false);
         }
         lblItemQuantity.setText(String.valueOf(itemCount));
