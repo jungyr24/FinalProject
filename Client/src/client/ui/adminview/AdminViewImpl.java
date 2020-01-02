@@ -4,6 +4,7 @@ import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -84,7 +85,6 @@ public class AdminViewImpl implements AdminView {
     }
 
 
-
     public void setCurrentIngredients() { // 제품 재고 현황
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.setLayout(null);
 
@@ -92,14 +92,13 @@ public class AdminViewImpl implements AdminView {
         CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setBounds(480, 10, 200, 30);
 
-        // table
-        CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.rowCurrentIngredient, CURRENT_INGRDNT_HOLDER.colCurrentIngredient);
         JScrollPane jsp = new JScrollPane(CURRENT_INGRDNT_HOLDER.table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jsp.setBounds(40, 70, 1000, 400);
 
         // btnBack
         CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients.setBounds(940, 580, 100, 50);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients);
-        CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(jsp);
+//        CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(jsp);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients);
 
     }
@@ -199,18 +198,21 @@ public class AdminViewImpl implements AdminView {
 
     @Override
     public void updateCurrentTable(Vector<IngredientModel> lists) {
-        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[0] = "No";
-        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[1] = "재고";
-        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[2] = "재고수량";
+        // table
 
+
+        CURRENT_INGRDNT_HOLDER.rowCurrentIngredient = new String[lists.size()][3];
         for (int i = 0; i < lists.size(); i++) {
-            for (int j = 0; j < 3; j++) {
-                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = Integer.toString(lists.get(i).IgCode);
-                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = lists.get(i).IgName;
-                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = Integer.toString(lists.get(i).IgNumber);
-            }
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][0] = Integer.toString(lists.get(i).IgCode);
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][1] = (lists.get(i).IgName);
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][2] = Integer.toString(lists.get(i).IgNumber);
         }
-        CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.rowCurrentIngredient, CURRENT_INGRDNT_HOLDER.colCurrentIngredient);
+        CURRENT_INGRDNT_HOLDER.model = new DefaultTableModel();
+        CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.model);
+
+
+
+        CURRENT_INGRDNT_HOLDER.table.updateUI();
     }
 
     @Override
@@ -231,6 +233,6 @@ public class AdminViewImpl implements AdminView {
 
     @Override
     public void totalMoneyTable(Vector<ProductModel> lists, int totalMoney) {
-        
+
     }
 }
