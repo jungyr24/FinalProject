@@ -116,6 +116,7 @@ public class UserViewImpl implements UserView {
             totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount);
         });
         lblTotalMoney.setText("총 금액 : " + totalMoney);
+        lblTotalMoney.setFont(new Font("맑은고딕",Font.BOLD,15));
     }
 
     @Override
