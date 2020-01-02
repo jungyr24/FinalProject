@@ -156,26 +156,26 @@ public class UserViewImpl implements UserView {
     @Override
     public void removeItem(SelectedItemPnl item) {
         selectedListPnl.remove(item);
-        System.out.println(selectedItemLists.remove(item.productModel));
+        selectedItemLists.remove(item);
         item.updateItemCount();
         selectedListPnl.updateUI();
     }
 
     @Override
-    public  void addListener(ActionListener listener) {
+    public void addListener(ActionListener listener) {
         btnAdminClient.addActionListener(listener); // Manager <-> User Switch Button
         btnPay.addActionListener(listener); // 구매 버튼
     }
 
     @Override
-    public  void addItemListListener(ActionListener listener) {
+    public void addItemListListener(ActionListener listener) {
         itemLists.forEach(item -> {
             item.addListener(listener);
         });
     }
 
     @Override
-    public  void addSelectedItemListener(ActionListener listener) {
+    public void addSelectedItemListener(ActionListener listener) {
         selectedItemLists.forEach(selectedItem -> {
             selectedItem.addListener(listener);
         });
