@@ -1,4 +1,4 @@
-package client.ui.holder;
+package client.ui.adminview.holder;
 
 import javax.swing.*;
 

@@ -29,7 +29,6 @@ public class SelectedItemPnl extends JPanel {
         }
         lblItemQuantity.setText(String.valueOf(itemCount));
         itemNameAndMoneyPnl.setBounds(10, 10, 180, 50);
-        itemNameAndMoneyPnl.setBackground(Color.pink);
         itemNameAndMoneyPnl.setLayout(new BorderLayout());
 
         lblSelectedItemName.setText(productModel.PrName);
@@ -42,7 +41,7 @@ public class SelectedItemPnl extends JPanel {
 
 
         itemQuantityPnl.setBounds(190, 10, 100, 50);
-        itemQuantityPnl.setBackground(Color.magenta);
+        itemQuantityPnl.setBackground(Color.darkGray);
         itemQuantityPnl.setLayout(new GridLayout(1, 4));
 
         itemQuantityPnl.add(btnMinus);
