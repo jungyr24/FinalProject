@@ -15,17 +15,19 @@ public class SelectedItemPnl extends JPanel {
     JPanel itemQuantityPnl = new JPanel();
     public JButton btnMinus = new JButton("-"), btnPlus = new JButton("+"), btnX = new JButton("x");
     public int itemCount = 1;
-    JLabel lblItemQuantity = new JLabel(Integer.toString(itemCount));
+    JLabel lblItemQuantity = new JLabel();
     public ProductModel productModel;
 
     public SelectedItemPnl(ProductModel productModel) {
         this.productModel = productModel;
-        this.productModel = productModel;
 
-        if (this.productModel.IsSell == false) {
+        itemCount = productModel.PrNumber;
+        lblItemQuantity.setText(Integer.toString(itemCount));
+
+        if (productModel.IsSell == false) {
             btnPlus.setEnabled(false);
         }
-        if (this.itemCount < 0) {
+        if (productModel.PrNumber < 0) {
             btnMinus.setEnabled(false);
         }
         itemNameAndMoneyPnl.setBounds(10, 10, 180, 50);

@@ -100,23 +100,23 @@ public class UserViewImpl implements UserView {
         selectedItemLists.forEach(item -> {
             if (productModel.PrName == item.productModel.PrName) {
                 item.productModel.PrNumber += 1;
+
                 isExist = true;
             }
         });
-
         if (isExist) {
             selectedListPnl.removeAll();
             selectedItemLists.forEach(item -> {
                 selectedListPnl.add(item);
+                selectedListPnl.updateUI();
             });
-            selectedListPnl.updateUI();
-            isExist = false;
         } else {
             SelectedItemPnl item = new SelectedItemPnl(productModel);
             selectedItemLists.add(item);
             selectedListPnl.add(item);
             selectedListPnl.updateUI();
         }
+        isExist = false;
     }
 
 
