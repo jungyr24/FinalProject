@@ -54,23 +54,8 @@ public class UserViewImpl implements UserView {
         totalMoneyPnl.add(lblTotalMoney, BorderLayout.CENTER);
         totalMoneyPnl.setBackground(Color.lightGray);
 
-        // insert money
-        JPanel insertMoneyPnl = new JPanel();
-        insertMoneyPnl.setLayout(new BorderLayout());
-        insertMoneyPnl.setBounds(670, 450, 400, 70);
-        insertMoneyPnl.add(lblInsertMoney, BorderLayout.CENTER);
-        insertMoneyPnl.setBackground(Color.lightGray);
-
-        // change money
-        JPanel changeMoneyPnl = new JPanel();
-        changeMoneyPnl.setLayout(new BorderLayout());
-        changeMoneyPnl.setBounds(670, 520, 400, 70);
-        changeMoneyPnl.add(lblChangeMoney, BorderLayout.CENTER);
-        changeMoneyPnl.setBackground(Color.lightGray);
 
         startPnl.add(totalMoneyPnl);
-        startPnl.add(insertMoneyPnl);
-        startPnl.add(changeMoneyPnl);
 
 
         // 구매 버튼
@@ -121,23 +106,11 @@ public class UserViewImpl implements UserView {
         }
 
         isExist = false;
-        
+
         lblTotalMoney.setText("총 금액 : " + totalMoney);
 
     }
 
-
-    // todo 제거 - > view 쪽에서 list를 가지고 있어야 붙이고 지우고,,
-
-    @Override
-    public void updateInsertMoney(String money) { // 투입 금액
-        lblInsertMoney.setText(lblInsertMoney.getText() + money);
-    }
-
-    @Override
-    public void updateChangesMoney(String money) { // 거스름돈
-        lblChangeMoney.setText(lblChangeMoney.getText() + money);
-    }
 
     @Override
     public void updateTotalMoney(String money) { // TODO 총 금액
