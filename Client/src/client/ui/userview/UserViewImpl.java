@@ -2,9 +2,13 @@ package client.ui.userview;
 
 import client.data.dao.ProductModel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
 
