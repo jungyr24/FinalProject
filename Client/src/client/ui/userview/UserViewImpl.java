@@ -9,8 +9,6 @@ import java.util.Vector;
 
 public class UserViewImpl implements UserView {
     boolean isExist = false;
-    // TODO: 2019-12-31  Vector<ProductModel> productModels = ;
-
 
     public UserViewImpl() {
         setStartPnl();
@@ -106,7 +104,7 @@ public class UserViewImpl implements UserView {
             }
         });
 
-        if (isExist == true) {
+        if (isExist) {
             selectedListPnl.removeAll();
             selectedItemLists.forEach(item -> {
                 selectedListPnl.add(item);
@@ -119,8 +117,6 @@ public class UserViewImpl implements UserView {
             selectedListPnl.add(item);
             selectedListPnl.updateUI();
         }
-
-
     }
 
 
