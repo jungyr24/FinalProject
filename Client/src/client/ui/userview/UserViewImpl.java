@@ -29,7 +29,6 @@ public class UserViewImpl implements UserView {
 
 
         itemListPnl.setLayout(new GridLayout(4, 3, 15, 15));
-        itemListPnl.setBackground(Color.orange);
         JScrollPane scroll = new JScrollPane(itemListPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 

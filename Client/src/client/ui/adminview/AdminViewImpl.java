@@ -51,7 +51,6 @@ public class AdminViewImpl implements AdminView {
 
     public void setTotalMoneyPnl() {
         TOTAL_MONEY_HOLDER.totalMoneyPnl.setLayout(null);
-        TOTAL_MONEY_HOLDER.lblTitleTotalMoney.setText("Total Money");
         TOTAL_MONEY_HOLDER.lblTitleTotalMoney.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         TOTAL_MONEY_HOLDER.lblTitleTotalMoney.setBounds(480, 10, 200, 30);
 
@@ -61,7 +60,6 @@ public class AdminViewImpl implements AdminView {
         TOTAL_MONEY_HOLDER.totalSalesPnl.setBounds(40, 490, 1000, 70);
         TOTAL_MONEY_HOLDER.totalSalesPnl.setLayout(null);
 
-        TOTAL_MONEY_HOLDER.lblTotalSales.setText("총 매출 ");
         TOTAL_MONEY_HOLDER.lblTotalSales.setBounds(10, 5, 100, 50);
         TOTAL_MONEY_HOLDER.lblTotalSales.setFont(new Font("맑은고딕", Font.PLAIN, 20));
 
@@ -87,8 +85,6 @@ public class AdminViewImpl implements AdminView {
 
     public void setCurrentIngredients() { // 제품 재고 현황
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.setLayout(null);
-
-        CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setText("Current Items");
         CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setBounds(480, 10, 200, 30);
 
@@ -210,7 +206,7 @@ public class AdminViewImpl implements AdminView {
         CURRENT_INGRDNT_HOLDER.model = new DefaultTableModel();
         CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.model);
 
-        
+
 
         CURRENT_INGRDNT_HOLDER.table.updateUI();
     }

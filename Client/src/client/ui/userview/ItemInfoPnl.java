@@ -21,11 +21,10 @@ public class ItemInfoPnl extends JPanel {
 
     public ItemInfoPnl(ProductModel productModel, int index) {
         setPreferredSize(new Dimension(100, 70));
-        setBackground(Color.CYAN);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.productModel = productModel;
         btnItem.setText(Integer.toString(index));
-        //btnItem.setPreferredSize(new Dimension(100,50));
+        btnItem.setPreferredSize(new Dimension(90,30));
         lblItemPrice.setText(String.valueOf(productModel.PrPrice));
         lblItemName.setText(productModel.PrName);
         itemIndex = index;
