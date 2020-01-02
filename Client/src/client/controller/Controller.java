@@ -73,7 +73,6 @@ public class Controller implements ActionListener {
                     repository.selectItem(item.productModel, (productModelVector) -> {
                         updateItemView(item.productModel, productModelVector);
                     });
-
                 }
             });
             cardLayoutMain.userView.selectedItemLists.forEach(item -> {
