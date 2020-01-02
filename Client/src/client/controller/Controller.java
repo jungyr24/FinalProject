@@ -66,7 +66,9 @@ public class Controller implements ActionListener {
             cardLayoutMain.changeDialog("BuyIngredients");
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {// 총 매출 버튼
             cardLayoutMain.changeDialog("TotalMoney");
-            repository.totalMoney(lists -> {
+            repository.totalMoney((lists, total) -> {
+                System.out.println(lists);
+                System.out.println(total);
                 //TODO Item Total Money 눌렸을때 그려줘야 하는 로직
             });
         } else if (cardLayoutMain.adminView.btnAddItem.equals(obj)) {

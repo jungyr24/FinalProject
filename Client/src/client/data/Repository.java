@@ -4,6 +4,7 @@ import client.data.dao.ProductModel;
 import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
+import client.data.datasource.callback.TotalMoneyCallback;
 
 public interface Repository {
     void connectServer(ServerConnectionCallback callback);
@@ -16,7 +17,7 @@ public interface Repository {
 
     void buyItem(int total);
 
-    void totalMoney(SelectItemCallback callback);
+    void totalMoney(TotalMoneyCallback callback);
 
     void currentIngredients(GetTableCallback callback);
 
