@@ -19,8 +19,8 @@ public interface AdminView {
 
 
     JPanel AdminClientButtonPnl = new JPanel();
-    JButton btnTotalMoney = new JButton("Item Total Money"), btnCurrentIngredients = new JButton("Current Items"),
-            btnBuyIngredients = new JButton("Buy Items"), btnAddItem = new JButton("Add Items"), btnAdminClient = new JButton("사용자");
+    JButton btnTotalMoney = new JButton("총 매출"), btnCurrentIngredients = new JButton("재고 현황"),
+            btnBuyIngredients = new JButton("재고 구매"), btnAddItem = new JButton("제품 추가"), btnAdminClient = new JButton("사용자");
 
     void updateTable(Vector<IngredientModel> ingredientModels);
     void addAdminListener(ActionListener listener);

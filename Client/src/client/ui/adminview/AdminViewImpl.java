@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 public class AdminViewImpl implements AdminView {
-    JPanel tablePnl;
+    String colTotalMoney[] = {};
+    String rowTotalMoney[][] = {};
 
+    JTable table;
 
     public AdminViewImpl() {
         setBtnAdminWhatToDoPnl();
@@ -72,10 +74,14 @@ public class AdminViewImpl implements AdminView {
         TOTAL_MONEY_HOLDER.totalSalesPnl.add(TOTAL_MONEY_HOLDER.lblTotalSales);
         TOTAL_MONEY_HOLDER.totalSalesPnl.add(TOTAL_MONEY_HOLDER.lblTotalSalesMoney);
 
+
+        // table
+
+        JScrollPane jsp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         // btnBack
         TOTAL_MONEY_HOLDER.btnBackTotalMoney.setBounds(940, 580, 100, 50);
-
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.lblTitleTotalMoney);
+        TOTAL_MONEY_HOLDER.totalMoneyPnl.add(jsp);
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.btnBackTotalMoney);
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.totalSalesPnl);
 
@@ -192,10 +198,20 @@ public class AdminViewImpl implements AdminView {
 
     @Override
     public void updateTable(Vector<IngredientModel> lists) {
+        colTotalMoney[0] = "No";
+        colTotalMoney[1] = "재고";
+        colTotalMoney[2] = "재고수량";
+
         for (int i = 0; i < lists.size(); i++) {
-            System.out.println(lists.get(i).IgName);
+            for (int j = 0; j < 3; j++) {
+                rowTotalMoney[i][j] = Integer.toString(lists.get(i).IgCode);
+                rowTotalMoney[i][j] = lists.get(i).IgName;
+                rowTotalMoney[i][j] = Integer.toString(lists.get(i).IgNumber);
+            }
         }
+        table = new JTable(rowTotalMoney, colTotalMoney);
     }
+
 
     @Override
     public void addAdminListener(ActionListener listener) {

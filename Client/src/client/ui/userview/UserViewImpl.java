@@ -19,11 +19,11 @@ public class UserViewImpl implements UserView {
         // client View 전체를 담는 패널
         startPnl.setLayout(null);
         // Manager <-> User Button
-        btnAdminClient.setText("Manager");
+        btnAdminClient.setText("관리자");
         btnAdminClient.setBounds(0, 0, 100, 30);
         startPnl.add(btnAdminClient);
-        JLabel lblWhatToDo = new JLabel("Select Item");
-        lblWhatToDo.setFont(new Font("맑은고딕", Font.BOLD, 20));
+        JLabel lblWhatToDo = new JLabel("메뉴 선택");
+        lblWhatToDo.setFont(new Font("나눔고딕", Font.BOLD, 20));
         lblWhatToDo.setBounds(400, 10, 200, 20);
         startPnl.add(lblWhatToDo);
 
