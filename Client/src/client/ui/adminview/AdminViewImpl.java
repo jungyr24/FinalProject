@@ -14,7 +14,6 @@ public class AdminViewImpl implements AdminView {
     public AdminViewImpl() {
         setBtnAdminWhatToDoPnl();
         setTotalMoneyPnl();
-        setCurrentIngredients();
         setBuyIngredients();
         setAddItem();
     }
@@ -98,7 +97,7 @@ public class AdminViewImpl implements AdminView {
         // btnBack
         CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients.setBounds(940, 580, 100, 50);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients);
-//        CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(jsp);
+        CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(jsp);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients);
 
     }
@@ -200,19 +199,17 @@ public class AdminViewImpl implements AdminView {
     public void updateCurrentTable(Vector<IngredientModel> lists) {
         // table
 
-
-        CURRENT_INGRDNT_HOLDER.rowCurrentIngredient = new String[lists.size()][3];
-        for (int i = 0; i < lists.size(); i++) {
-            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][0] = Integer.toString(lists.get(i).IgCode);
-            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][1] = (lists.get(i).IgName);
-            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][2] = Integer.toString(lists.get(i).IgNumber);
-        }
-        CURRENT_INGRDNT_HOLDER.model = new DefaultTableModel();
+        CURRENT_INGRDNT_HOLDER.model = new DefaultTableModel(CURRENT_INGRDNT_HOLDER.colCurrentIngredient, 0);
         CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.model);
+        for (IngredientModel ingredientModel : lists) {
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient = new Vector<>();
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient.addElement(Integer.toString(ingredientModel.IgCode));
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient.addElement(ingredientModel.IgName);
+            CURRENT_INGRDNT_HOLDER.rowCurrentIngredient.addElement(Integer.toString(ingredientModel.IgNumber));
+            CURRENT_INGRDNT_HOLDER.model.addRow(CURRENT_INGRDNT_HOLDER.rowCurrentIngredient);
+        }
+        setCurrentIngredients();
 
-        
-
-        CURRENT_INGRDNT_HOLDER.table.updateUI();
     }
 
     @Override
