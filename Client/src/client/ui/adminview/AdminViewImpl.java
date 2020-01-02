@@ -1,11 +1,11 @@
 package client.ui.adminview;
 
-import client.ui.userview.UserView;
+import client.data.dao.ProductModel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class AdminViewImpl implements AdminView {
     JPanel tablePnl;
@@ -112,17 +112,18 @@ public class AdminViewImpl implements AdminView {
         //totalMoneyPnl.add(scroll);
         totalMoneyPnl.add(btnBackTotalMoney);
         totalMoneyPnl.add(totalSalesPnl);
-        setTotalMoneyPnlTable(t, 100000);
+
+        //setTotalMoneyPnlTable(t, 100000);
     }
 
 
     // TODO: 2020-01-01 Override
-    public void setTotalMoneyPnlTable(JTable table, int totalMoney) { // 총 매출
-        lblTotalSalesMoney.setText(Integer.toString(totalMoney));
+    public void setTotalMoneyPnlTable(Vector<ProductModel> lists) { // 총 매출
+        /*lblTotalSalesMoney.setText(Integer.toString(totalMoney));
         JScrollPane scroll = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setBounds(40, 70, 1000, 400);
-        totalMoneyPnl.add(scroll);
+        totalMoneyPnl.add(scroll);*/
     }
 
 
@@ -170,20 +171,20 @@ public class AdminViewImpl implements AdminView {
         buyIngredientsPnl.add(tfQuantityToAdd);
 
         // 등록, 수정, 삭제 btn
-        btnInsert.setBounds(110,350,100,50);
-        btnModify.setBounds(220,350,100,50);
-        btnDelete.setBounds(330,350,100,50);
+        btnInsert.setBounds(110, 350, 100, 50);
+        btnModify.setBounds(220, 350, 100, 50);
+        btnDelete.setBounds(330, 350, 100, 50);
         buyIngredientsPnl.add(btnInsert);
         buyIngredientsPnl.add(btnModify);
         buyIngredientsPnl.add(btnDelete);
 
         // 총액감소 label
         decreaseMoneyPnl.setLayout(new BorderLayout());
-        decreaseMoneyPnl.setBounds(100,410,350,100);
+        decreaseMoneyPnl.setBounds(100, 410, 350, 100);
         decreaseMoneyPnl.setBackground(Color.orange);
         buyIngredientsPnl.add(decreaseMoneyPnl);
 
-        decreaseMoneyPnl.add(lblTitleDecreasedTotalMoney,BorderLayout.WEST);
+        decreaseMoneyPnl.add(lblTitleDecreasedTotalMoney, BorderLayout.WEST);
         decreaseMoneyPnl.add(lblDecreasedTotalMoney, BorderLayout.CENTER);
         buyIngredientsPnl.add(decreaseMoneyPnl);
 
@@ -206,14 +207,14 @@ public class AdminViewImpl implements AdminView {
         buyIngredientsPnl.add(btnBackBuyIngredients);
     }
 
-    public void setAddItem(){ // 제품 추가
+    public void setAddItem() { // 제품 추가
         addItemPnl.setLayout(null);
         lblTitleAddItem.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         lblTitleAddItem.setBounds(480, 10, 200, 30);
         addItemPnl.add(lblTitleAddItem);
 
         JPanel itemListAtAdminPnl = new JPanel();
-        itemListAtAdminPnl.setLayout(new GridLayout(5,5,15,15));
+        itemListAtAdminPnl.setLayout(new GridLayout(5, 5, 15, 15));
 
         // item list panel
         JScrollPane jsp = new JScrollPane(itemListAtAdminPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -233,8 +234,8 @@ public class AdminViewImpl implements AdminView {
         allBtnAddItemPnl.add(btnModifyAddItemPnl);
         allBtnAddItemPnl.add(btnDeleteAddItemPml);
 
-        newItemAddPnl.setBounds(0,480,1100,50);
-        allBtnAddItemPnl.setBounds(0,530,1100,50);
+        newItemAddPnl.setBounds(0, 480, 1100, 50);
+        allBtnAddItemPnl.setBounds(0, 530, 1100, 50);
 
         addItemPnl.add(newItemAddPnl);
         addItemPnl.add(allBtnAddItemPnl);

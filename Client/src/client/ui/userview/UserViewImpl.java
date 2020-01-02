@@ -78,6 +78,8 @@ public class UserViewImpl implements UserView {
             itemListPnl.add(item);
         }
         itemListPnl.updateUI();
+
+
     }
 
 
@@ -108,6 +110,7 @@ public class UserViewImpl implements UserView {
         isExist = false;
 
         lblTotalMoney.setText("총 금액 : " + totalMoney);
+
 
     }
 

@@ -26,5 +26,6 @@ public interface AdminView {
     JTextField tfItemToAdd = new JTextField(20), tfNewItemPrice = new JTextField(20);
     JButton btnInsertAddItemPnl = new JButton("등록"), btnModifyAddItemPnl = new JButton("수정"), btnDeleteAddItemPml = new JButton("삭제");
 
+
     void addAdminListener(ActionListener listener);
 }
