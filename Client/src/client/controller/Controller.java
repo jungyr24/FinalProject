@@ -97,7 +97,7 @@ public class Controller implements ActionListener {
         }
     }
 
-    private void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
+    private synchronized void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
         cardLayoutMain.userView.updateSelectedLists(item.productModel);
         cardLayoutMain.userView.updateItemLists(productModelVector);
         cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
