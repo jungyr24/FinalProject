@@ -30,6 +30,7 @@ public class SelectedItemPnl extends JPanel {
         if (productModel.PrNumber < 0) {
             btnMinus.setEnabled(false);
         }
+        lblItemQuantity.setText(String.valueOf(itemCount));
         itemNameAndMoneyPnl.setBounds(10, 10, 180, 50);
         itemNameAndMoneyPnl.setBackground(Color.pink);
         itemNameAndMoneyPnl.setLayout(new BorderLayout());
