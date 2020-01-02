@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public interface UserView {
     JPanel startPnl = new JPanel(), itemListPnl = new JPanel(), selectedListPnl = new JPanel();
@@ -14,9 +15,11 @@ public interface UserView {
     JLabel lblTotalMoney = new JLabel("총 금액 ");
     List<ItemInfoPnl> itemLists = new LinkedList<>();
     List<SelectedItemPnl> selectedItemLists = new LinkedList<>();
-
+    AtomicInteger totalMoney = new AtomicInteger();
 
     void updateItemLists(Vector<ProductModel> lists);
+    
+    void updateMoney();
 
     void updateSelectedLists(ProductModel productModel);
 
@@ -25,6 +28,8 @@ public interface UserView {
     boolean minusItemCount(SelectedItemPnl item);
 
     void removeItem(SelectedItemPnl item);
+
+    void clearItem();
 
     void addListener(ActionListener listener);
 

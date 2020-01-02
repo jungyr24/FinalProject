@@ -48,6 +48,11 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void exitItem(ProductModel item, int itemCount, SelectItemCallback callback) {
-        serverConnection.exitItem(item,itemCount,callback);
+        serverConnection.exitItem(item, itemCount, callback);
+    }
+
+    @Override
+    public void buyItem(int total) {
+        serverConnection.buyItem(total);
     }
 }

@@ -45,7 +45,9 @@ public class Controller implements ActionListener {
     public synchronized void actionPerformed(ActionEvent actionEvent) {
         Object obj = actionEvent.getSource();
         if (cardLayoutMain.userView.btnPay.equals(obj)) {
-
+            repository.buyItem(Integer.parseInt(cardLayoutMain.userView.totalMoney.toString()));
+            cardLayoutMain.userView.clearItem();
+            cardLayoutMain.userView.updateMoney();
         } else if (cardLayoutMain.userView.btnAdminClient.equals(obj) || cardLayoutMain.adminView.btnAdminClient.equals(obj)) {
             if (changeDialogFlag) {
                 System.out.println("Admin");
@@ -71,7 +73,8 @@ public class Controller implements ActionListener {
             {
                 if (obj.equals(item.btnItem)) {
                     repository.selectItem(item.productModel, (productModelVector) -> {
-                        updateItemView(item.productModel, productModelVector);
+                        cardLayoutMain.userView.updateSelectedLists(item.productModel);
+                        updateItemView(productModelVector);
                     });
                 }
             });
@@ -79,22 +82,22 @@ public class Controller implements ActionListener {
                 if (obj.equals(item.btnMinus)) {
                     if (cardLayoutMain.userView.minusItemCount(item)) {
                         repository.minusItem(item.productModel, (productModelVector) -> {
-                            updateItemView(item.productModel, productModelVector);
+                            cardLayoutMain.userView.updateSelectedLists(item.productModel);
+                            updateItemView(productModelVector);
                         });
                     }
 
                 } else if (obj.equals(item.btnPlus)) {
                     if (cardLayoutMain.userView.plusItemCount(item)) {
                         repository.selectItem(item.productModel, (productModelVector) -> {
-                            updateItemView(item.productModel, productModelVector);
+                            cardLayoutMain.userView.updateSelectedLists(item.productModel);
+                            updateItemView(productModelVector);
                         });
                     }
                 } else if (obj.equals(item.btnX)) {
                     repository.exitItem(item.productModel, item.itemCount, (productModelVector) -> {
                         cardLayoutMain.userView.removeItem(item);
-                        cardLayoutMain.userView.updateItemLists(productModelVector);
-                        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
-                        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+                        updateItemView(productModelVector);
                     });
                 }
             });
@@ -102,11 +105,11 @@ public class Controller implements ActionListener {
     }
 
 
-    private void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
-        cardLayoutMain.userView.updateSelectedLists(productModel);
+    private void updateItemView(Vector<ProductModel> productModelVector) {
         cardLayoutMain.userView.updateItemLists(productModelVector);
         cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
         cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+        cardLayoutMain.userView.updateMoney();
     }
 
 
