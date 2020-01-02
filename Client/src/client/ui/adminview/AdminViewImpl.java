@@ -35,36 +35,15 @@ public class AdminViewImpl implements AdminView {
 
 
     public AdminViewImpl() {
-        /*setTitle("Manage");
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1100, 700);*/
-
-
-        //***************************
         setBtnAdminWhatToDoPnl();
-        //setTotalMoneyPnl();
-        //setCurrentIngredients();
-        //setBuyIngredients();
-
-        //tab.add(adminStartPanel, "adminStart");
-        //tab.add(totalMoneyPnl, "totalMoney");
-        //tab.add(currentIngredientsPnl, "currentIngredients");
-        //tab.add(buyIngredientsPnl, "buyIngredients");
-        //***************************
-
-
-        //AdminCardLayout.show(AdminTab, "adminStart");
-        //this.add(AdminTab, BorderLayout.NORTH);
-
-
-        //setVisible(true);
+        setTotalMoneyPnl();
+        setCurrentIngredients();
+        setBuyIngredients();
 
     }
 
     // 판매총액, 재고현황, 재고구매, 제품추가
     public void setBtnAdminWhatToDoPnl() {
-        //adminStartPanel = new JPanel();
         adminStartPanel.setLayout(new BorderLayout());
         btnAdminWhatToDo.setLayout(new GridLayout(2, 2, 50, 50));
         btnAdminWhatToDo.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
@@ -97,9 +76,9 @@ public class AdminViewImpl implements AdminView {
 
     public void setTotalMoneyPnl() {
         totalMoneyPnl.setLayout(null);
-        lblWhatToDo.setText("Total Money");
-        lblWhatToDo.setFont(new Font("맑은고딕", Font.PLAIN, 25));
-        lblWhatToDo.setBounds(480, 10, 200, 30);
+        lblTitleTotalMoney.setText("Total Money");
+        lblTitleTotalMoney.setFont(new Font("맑은고딕", Font.PLAIN, 25));
+        lblTitleTotalMoney.setBounds(480, 10, 200, 30);
 
         //totalMoneyTable = setTotalMoneyTable();
         /*JScrollPane scroll = new JScrollPane(t, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -124,14 +103,13 @@ public class AdminViewImpl implements AdminView {
         totalSalesPnl.add(lblTotalSalesMoney);
 
         // btnBack
-        btnBack.setBounds(940, 580, 100, 50);
+        btnBackTotalMoney.setBounds(940, 580, 100, 50);
 
-        totalMoneyPnl.add(lblWhatToDo);
+        totalMoneyPnl.add(lblTitleTotalMoney);
         //totalMoneyPnl.add(scroll);
-        totalMoneyPnl.add(btnBack);
+        totalMoneyPnl.add(btnBackTotalMoney);
         totalMoneyPnl.add(totalSalesPnl);
         setTotalMoneyPnlTable(t, 100000);
-        //todo add(totalMoneyPnl);
     }
 
 
@@ -148,9 +126,9 @@ public class AdminViewImpl implements AdminView {
     public void setCurrentIngredients() { // 제품 재고 현황
         currentIngredientsPnl.setLayout(null);
 
-        lblWhatToDo.setText("Current Items");
-        lblWhatToDo.setFont(new Font("맑은고딕", Font.PLAIN, 25));
-        lblWhatToDo.setBounds(480, 10, 200, 30);
+        lblTitleCurrentIngredients.setText("Current Items");
+        lblTitleCurrentIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 25));
+        lblTitleCurrentIngredients.setBounds(480, 10, 200, 30);
 
         // table
         JPanel tablePnl = new JPanel();
@@ -165,20 +143,19 @@ public class AdminViewImpl implements AdminView {
         scroll.setBounds(40, 70, 1000, 500);
 
         // btnBack
-        btnBack.setBounds(940, 580, 100, 50);
+        btnBackCurrentIngredients.setBounds(940, 580, 100, 50);
 
-        currentIngredientsPnl.add(lblWhatToDo);
+        currentIngredientsPnl.add(lblTitleCurrentIngredients);
         currentIngredientsPnl.add(scroll);
-        currentIngredientsPnl.add(btnBack);
-        // todo add(currentIngredientsPnl);
+        currentIngredientsPnl.add(btnBackCurrentIngredients);
 
     }
 
     public void setBuyIngredients() { // 재고 구매
         buyIngredientsPnl.setLayout(null);
-        lblWhatToDo.setText("Buy Items");
-        lblWhatToDo.setFont(new Font("맑은고딕", Font.PLAIN, 25));
-        lblWhatToDo.setBounds(480, 10, 200, 30);
+        lblTitleBuyIngredients.setText("Buy Items");
+        lblTitleBuyIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 25));
+        lblTitleBuyIngredients.setBounds(480, 10, 200, 30);
 
         // combo box
 
@@ -204,11 +181,11 @@ public class AdminViewImpl implements AdminView {
         scroll.setBounds(600, 70, 450, 500);
 
         // btnBack
-        btnBack.setBounds(940, 580, 100, 50);
+        btnBackBuyIngredients.setBounds(940, 580, 100, 50);
 
-        buyIngredientsPnl.add(lblWhatToDo);
+        buyIngredientsPnl.add(lblTitleBuyIngredients);
         buyIngredientsPnl.add(scroll);
-        buyIngredientsPnl.add(btnBack);
+        buyIngredientsPnl.add(btnBackBuyIngredients);
         // todo add(buyIngredientsPnl);
     }
 
@@ -221,10 +198,16 @@ public class AdminViewImpl implements AdminView {
     @Override
     public void addAdminListener(ActionListener listener) {
         btnAdminClient.addActionListener(listener);
-        btnBack.addActionListener(listener);
+
         btnTotalMoney.addActionListener(listener);
         btnCurrentIngredients.addActionListener(listener);
         btnBuyIngredients.addActionListener(listener);
         btnAddItem.addActionListener(listener);
+
+
+        btnBackTotalMoney.addActionListener(listener);
+        btnBackCurrentIngredients.addActionListener(listener);
+        btnBackBuyIngredients.addActionListener(listener);
+
     }
 }
