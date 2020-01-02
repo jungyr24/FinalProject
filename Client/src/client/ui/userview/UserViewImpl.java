@@ -103,7 +103,7 @@ public class UserViewImpl implements UserView {
             if (productModel.PrName.equals(item.productModel.PrName)) {
                 isExist = true;
             }
-            totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount + 1);
+            totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount);
         });
 
         if (isExist) { //이름이 같은 친구가 있으면 새로 그리기
@@ -140,8 +140,23 @@ public class UserViewImpl implements UserView {
     }
 
     @Override
-    public void plusItemCount(SelectedItemPnl item) {
-        item.addBtnClicked();
+    public boolean plusItemCount(SelectedItemPnl item) {
+        boolean returnValue = false;
+        for (ItemInfoPnl list : itemLists) {
+            if (list.productModel.PrName.equals(item.productModel.PrName)) {
+                if (list.productModel.IsSell) {
+                    item.addBtnClicked();
+                    returnValue = true;
+                    break;
+                }
+            }
+        }
+        return returnValue;
+    }
+
+    @Override
+    public boolean minusItemCount(SelectedItemPnl item) {
+        return item.minusBtnClicked();
     }
 
     @Override
