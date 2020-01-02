@@ -21,6 +21,8 @@ public interface UserView {
 
     // TODO: 2019-12-31 파라미터, 여기 i 어떻게?
 
+    void updateMoney();
+
     void updateSelectedLists(ProductModel productModel);
 
     boolean plusItemCount(SelectedItemPnl item);

@@ -69,6 +69,7 @@ public class Controller implements ActionListener {
             {
                 if (obj.equals(item.btnItem)) {
                     repository.selectItem(item.productModel, (productModelVector) -> {
+                        cardLayoutMain.userView.updateSelectedLists(item.productModel);
                         updateItemView(item.productModel, productModelVector);
                     });
                 }
@@ -77,6 +78,7 @@ public class Controller implements ActionListener {
                 if (obj.equals(item.btnMinus)) {
                     if (cardLayoutMain.userView.minusItemCount(item)) {
                         repository.minusItem(item.productModel, (productModelVector) -> {
+                            cardLayoutMain.userView.updateSelectedLists(item.productModel);
                             updateItemView(item.productModel, productModelVector);
                         });
                     }
@@ -84,15 +86,14 @@ public class Controller implements ActionListener {
                 } else if (obj.equals(item.btnPlus)) {
                     if (cardLayoutMain.userView.plusItemCount(item)) {
                         repository.selectItem(item.productModel, (productModelVector) -> {
+                            cardLayoutMain.userView.updateSelectedLists(item.productModel);
                             updateItemView(item.productModel, productModelVector);
                         });
                     }
                 } else if (obj.equals(item.btnX)) {
                     repository.exitItem(item.productModel, item.itemCount, (productModelVector) -> {
                         cardLayoutMain.userView.removeItem(item);
-                        cardLayoutMain.userView.updateItemLists(productModelVector);
-                        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
-                        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+                        updateItemView(item.productModel, productModelVector);
                     });
                 }
             });
@@ -101,10 +102,11 @@ public class Controller implements ActionListener {
 
 
     private void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
-        cardLayoutMain.userView.updateSelectedLists(productModel);
+
         cardLayoutMain.userView.updateItemLists(productModelVector);
         cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
         cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+        cardLayoutMain.userView.updateMoney();
     }
 
 
