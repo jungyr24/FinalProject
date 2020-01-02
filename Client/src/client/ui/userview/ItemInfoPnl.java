@@ -1,15 +1,10 @@
 package client.ui.userview;
 
 import client.data.dao.ProductModel;
-import kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.BuiltInsResourceLoader;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class ItemInfoPnl extends JPanel {
     public ProductModel productModel;
@@ -21,16 +16,16 @@ public class ItemInfoPnl extends JPanel {
 
     public ItemInfoPnl(ProductModel productModel, int index) {
         setPreferredSize(new Dimension(100, 70));
-        setBackground(Color.CYAN);
+        setBackground(new Color(237, 145, 55));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.productModel = productModel;
         btnItem.setText(Integer.toString(index));
         //btnItem.setPreferredSize(new Dimension(100,50));
         lblItemPrice.setText(String.valueOf(productModel.PrPrice));
         lblItemName.setText(productModel.PrName);
+        lblItemName.setFont(new Font("맑은고딕",Font.PLAIN,12));
+        lblItemPrice.setFont(new Font("맑은고딕",Font.PLAIN,12));
         itemIndex = index;
-
-
 
 
         add(btnItem);
@@ -40,6 +35,8 @@ public class ItemInfoPnl extends JPanel {
 
     public void addListener(ActionListener listener) {
         btnItem.addActionListener(listener);
-    };
+    }
+
+    ;
 
 }

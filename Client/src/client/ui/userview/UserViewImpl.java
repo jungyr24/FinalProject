@@ -29,7 +29,6 @@ public class UserViewImpl implements UserView {
 
 
         itemListPnl.setLayout(new GridLayout(4, 3, 15, 15));
-        itemListPnl.setBackground(Color.orange);
         JScrollPane scroll = new JScrollPane(itemListPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -40,7 +39,7 @@ public class UserViewImpl implements UserView {
 
         // selectedListPnl w 315, h 500
         selectedListPnl.setLayout(new GridLayout(50, 1, 3, 3));
-        selectedListPnl.setBackground(Color.green);
+        selectedListPnl.setBackground(new Color(0xBEA689));
         JScrollPane selectedListPnlScroll = new JScrollPane(selectedListPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         selectedListPnlScroll.setBounds(670, 50, 400, 300);
@@ -70,7 +69,6 @@ public class UserViewImpl implements UserView {
         for (int i = 0; i < lists.size(); i++) {
             ItemInfoPnl item = new ItemInfoPnl(lists.get(i), i);
             if (!item.productModel.IsSell) {
-                item.btnItem.setBackground(Color.magenta);
                 item.btnItem.setEnabled(false);
             }
             itemLists.add(item);
