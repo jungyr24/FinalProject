@@ -86,12 +86,14 @@ public class Controller implements ActionListener {
                     if (cardLayoutMain.userView.plusItemCount(item)) {
                         repository.selectItem(item.productModel, (productModelVector) -> {
                             updateItemView(item.productModel, productModelVector);
-
                         });
                     }
                 } else if (obj.equals(item.btnX)) {
                     repository.exitItem(item.productModel, item.itemCount, (productModelVector) -> {
-                        updateItemView(item.productModel, productModelVector);
+                        cardLayoutMain.userView.removeItem(item);
+                        cardLayoutMain.userView.updateItemLists(productModelVector);
+                        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
+                        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
                     });
                 }
             });
@@ -99,7 +101,7 @@ public class Controller implements ActionListener {
     }
 
 
-    private synchronized void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
+    private void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
         cardLayoutMain.userView.updateSelectedLists(productModel);
         cardLayoutMain.userView.updateItemLists(productModelVector);
         cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
