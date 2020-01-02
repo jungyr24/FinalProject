@@ -2,9 +2,13 @@ package client.ui.userview;
 
 import client.data.dao.ProductModel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -69,7 +73,23 @@ public class UserViewImpl implements UserView {
         itemLists.clear();
         itemListPnl.removeAll();
         for (int i = 0; i < lists.size(); i++) {
-            ItemInfoPnl item = new ItemInfoPnl(lists.get(i), i);
+            ItemInfoPnl item = new ItemInfoPnl(lists.get(i), i){
+                public void paintComponent(Graphics g){
+                    try {
+                        URL url = new URL("https://user-images.githubusercontent.com/55151796/71652678-85098b80-2d6a-11ea-9d02-8de80c1d3fc2.jpg");
+                        Image image = ImageIO.read(url);
+                        image = image.getScaledInstance(100,70,Image.SCALE_FAST);
+                        ImageIcon icon = new ImageIcon(image);
+                        g.drawImage(icon.getImage(),0,0,null);
+                        setOpaque(false);
+                        super.paintComponent(g);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
             if (!item.productModel.IsSell) {
                 item.btnItem.setBackground(Color.magenta);
                 item.btnItem.setEnabled(false);
