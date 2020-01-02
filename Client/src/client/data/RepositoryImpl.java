@@ -5,6 +5,7 @@ import client.data.datasource.ServerConnection;
 import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
+import client.data.datasource.callback.TotalMoneyCallback;
 
 import java.util.Vector;
 
@@ -59,8 +60,13 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void totalMoney(SelectItemCallback callback) {
-       // serverConnection.totalMoney();
-        // TODO: 2020-01-02  
+        
+    }
+
+    @Override
+    public void totalMoney(TotalMoneyCallback callback) {
+        serverConnection.totalMoney(callback);
+
     }
     
 

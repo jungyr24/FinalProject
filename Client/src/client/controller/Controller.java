@@ -1,9 +1,7 @@
 package client.controller;
 
 import client.data.Repository;
-import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
-import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 import client.ui.CardLayoutMain;
 import kotlin.jvm.Volatile;
@@ -56,10 +54,8 @@ public class Controller implements ActionListener {
             cardLayoutMain.userView.updateMoney();
         } else if (cardLayoutMain.userView.btnAdminClient.equals(obj) || cardLayoutMain.adminView.btnAdminClient.equals(obj)) {
             if (changeDialogFlag) {
-                System.out.println("Admin");
                 cardLayoutMain.changeDialog("Admin");
             } else {
-                System.out.println("Start");
                 cardLayoutMain.changeDialog("Start");
             }
             changeDialogFlag = !changeDialogFlag;
@@ -74,6 +70,7 @@ public class Controller implements ActionListener {
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) { // 총 매출
             cardLayoutMain.changeDialog("TotalMoney");
             repository.totalMoney(lists -> cardLayoutMain.adminView.totalMoneyTable(lists));
+
 
         } else if (cardLayoutMain.adminView.btnAddItem.equals(obj)) {
             cardLayoutMain.changeDialog("AddItem");

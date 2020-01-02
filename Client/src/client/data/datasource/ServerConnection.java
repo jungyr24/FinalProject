@@ -5,6 +5,7 @@ import client.data.dao.ProductModel;
 import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
+import client.data.datasource.callback.TotalMoneyCallback;
 import client.util.JsonUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -133,8 +134,29 @@ public class ServerConnection {
         send(jsonObject.toString());
     }
 
-    public void totalMoney(SelectItemCallback callback) {
-// TODO: 2020-01-02  
+
+    public void totalMoney(TotalMoneyCallback callback) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("total", 0);
+        send(jsonObject.toString());
+        new Thread(() -> {
+            try {
+                String data = reader.readLine();
+                JsonObject object = (JsonObject) parser.parse(data);
+                int total = object.get("total").getAsInt();
+                String arr = object.get("array").getAsString();
+                JsonArray array = (JsonArray) parser.parse(arr);
+                Vector<ProductModel> vector = new Vector<>();
+                for (JsonElement obj : array) {
+                    ProductModel model = JsonUtil.INSTANCE.getProductModel(obj);
+                    vector.add(model);
+                }
+                callback.success(vector, total);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
     }
 
     public void currentIngredients(GetTableCallback callback) {
