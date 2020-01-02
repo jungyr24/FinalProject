@@ -133,8 +133,24 @@ public class ServerConnection {
         send(jsonObject.toString());
     }
 
-    public void totalMoney(ProductModel item, SelectItemCallback callback) {
-
+    public void totalMoney(SelectItemCallback callback) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("total", 0);
+        send(jsonObject.toString());
+        new Thread(() -> {
+            try {
+                String data = reader.readLine();
+                JsonArray array = (JsonArray) parser.parse(data);
+                Vector<ProductModel> vector = new Vector<>();
+                for (JsonElement object : array) {
+                    ProductModel model = JsonUtil.INSTANCE.getProductModel(object);
+                    vector.add(model);
+                }
+                callback.success(vector);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public void currentIngredients(GetTableCallback callback) {

@@ -58,8 +58,8 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public void totalMoney(ProductModel item, SelectItemCallback callback) {
-        serverConnection.totalMoney(item, callback);
+    public void totalMoney( SelectItemCallback callback) {
+        serverConnection.totalMoney(callback);
     }
 
     @Override

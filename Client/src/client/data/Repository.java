@@ -16,7 +16,9 @@ public interface Repository {
 
     void buyItem(int total);
 
-    void totalMoney(ProductModel item, SelectItemCallback callback);
+    void totalMoney(SelectItemCallback callback);
 
     void currentIngredients(GetTableCallback callback);
+
+
 }
