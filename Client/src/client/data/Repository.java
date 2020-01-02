@@ -13,5 +13,5 @@ public interface Repository {
 
     void exitItem(ProductModel item, int itemCount, SelectItemCallback callback);
 
-    void buyItem();
+    void buyItem(int total);
 }

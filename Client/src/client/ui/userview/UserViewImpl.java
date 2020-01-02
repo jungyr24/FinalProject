@@ -2,15 +2,10 @@ package client.ui.userview;
 
 import client.data.dao.ProductModel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Vector;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class UserViewImpl implements UserView {
     boolean isExist = false;
@@ -115,7 +110,7 @@ public class UserViewImpl implements UserView {
 
     @Override
     public void updateMoney() {
-        AtomicInteger totalMoney = new AtomicInteger();
+        totalMoney.set(0);
         selectedItemLists.forEach(item -> {
             totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount);
         });

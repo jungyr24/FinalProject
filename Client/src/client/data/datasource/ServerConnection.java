@@ -126,9 +126,9 @@ public class ServerConnection {
         ).start();
     }
 
-    public void buyItem() {
+    public void buyItem(int total) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("buy", 0);
+        jsonObject.addProperty("buy", total);
         send(jsonObject.toString());
     }
 }

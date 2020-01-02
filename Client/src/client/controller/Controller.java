@@ -45,8 +45,9 @@ public class Controller implements ActionListener {
     public synchronized void actionPerformed(ActionEvent actionEvent) {
         Object obj = actionEvent.getSource();
         if (cardLayoutMain.userView.btnPay.equals(obj)) {
-            repository.buyItem();
+            repository.buyItem(Integer.parseInt(cardLayoutMain.userView.totalMoney.toString()));
             cardLayoutMain.userView.clearItem();
+            cardLayoutMain.userView.updateMoney();
         } else if (cardLayoutMain.userView.btnAdminClient.equals(obj) || cardLayoutMain.adminView.btnAdminClient.equals(obj)) {
             if (changeDialogFlag) {
                 System.out.println("admin");

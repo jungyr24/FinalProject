@@ -52,7 +52,7 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public void buyItem() {
-        serverConnection.buyItem();
+    public void buyItem(int total) {
+        serverConnection.buyItem(total);
     }
 }
