@@ -230,7 +230,7 @@ public class AdminViewImpl implements AdminView {
     }
 
     @Override
-    public void totalMoneyTable(Vector<ProductModel> productModels) {
-
+    public void totalMoneyTable(Vector<ProductModel> lists, int totalMoney) {
+        
     }
 }

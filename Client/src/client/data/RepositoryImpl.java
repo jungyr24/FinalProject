@@ -60,7 +60,7 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void totalMoney(SelectItemCallback callback) {
-        
+
     }
 
     @Override

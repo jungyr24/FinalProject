@@ -25,7 +25,7 @@ public interface AdminView {
 
     void updateCurrentTable(Vector<IngredientModel> ingredientModels);
     void updateBuyIngredientTable(Vector<IngredientModel> ingredientModels);
-    void totalMoneyTable(Vector<ProductModel> productModels);
+    void totalMoneyTable(Vector<ProductModel> productModels, int totalMoney);
 
     void addAdminListener(ActionListener listener);
 }
