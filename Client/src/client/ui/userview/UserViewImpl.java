@@ -141,10 +141,6 @@ public class UserViewImpl implements UserView {
         lblTotalMoney.setText(lblTotalMoney.getText() + money);
     }
 
-    @Override
-    public void showUserInterface() {
-
-    }
 
     @Override
     public synchronized void addListener(ActionListener listener) {

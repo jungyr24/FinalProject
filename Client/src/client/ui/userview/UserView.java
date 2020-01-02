@@ -29,8 +29,6 @@ public interface UserView {
 
     void updateTotalMoney(String money);
 
-    void showUserInterface();
-
     void addListener(ActionListener listener);
 
     void addItemListListener(ActionListener listener);
