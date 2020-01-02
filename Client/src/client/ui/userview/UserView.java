@@ -18,9 +18,6 @@ public interface UserView {
 
     void updateItemLists(Vector<ProductModel> lists);
 
-
-    // TODO: 2019-12-31 파라미터, 여기 i 어떻게?
-
     void updateSelectedLists(ProductModel productModel);
 
     void updateTotalMoney(String money);

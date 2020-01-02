@@ -49,22 +49,24 @@ public class Controller implements ActionListener {
 
         } else if (cardLayoutMain.userView.btnAdminClient.equals(obj) || cardLayoutMain.adminView.btnAdminClient.equals(obj)) {
             if (changeDialogFlag) {
-                System.out.println("admin");
-                cardLayoutMain.changeDialog("admin");
+                System.out.println("Admin");
+                cardLayoutMain.changeDialog("Admin");
             } else {
-                System.out.println("start");
-                cardLayoutMain.changeDialog("start");
+                System.out.println("Start");
+                cardLayoutMain.changeDialog("Start");
             }
             changeDialogFlag = !changeDialogFlag;
         } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) {
-            cardLayoutMain.changeDialog("btnCurrentIngredients");
+            cardLayoutMain.changeDialog("CurrentIngredients");
         } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) {
-            cardLayoutMain.changeDialog("btnBuyIngredients");
+            cardLayoutMain.changeDialog("BuyIngredients");
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {
-            cardLayoutMain.changeDialog("btnTotalMoney");
+            cardLayoutMain.changeDialog("TotalMoney");
+        } else if (cardLayoutMain.adminView.btnAddItem.equals(obj)) {
+            cardLayoutMain.changeDialog("AddItem");
         } else if (cardLayoutMain.adminView.btnBackTotalMoney.equals(obj) || cardLayoutMain.adminView.btnBackBuyIngredients.equals(obj)
-                || cardLayoutMain.adminView.btnBackCurrentIngredients.equals(obj)) {
-            cardLayoutMain.changeDialog("admin");
+                || cardLayoutMain.adminView.btnBackCurrentIngredients.equals(obj) || cardLayoutMain.adminView.btnBackAddItem.equals(obj)) {
+            cardLayoutMain.changeDialog("Admin");
         } else {
             cardLayoutMain.userView.itemLists.forEach(item ->
             {

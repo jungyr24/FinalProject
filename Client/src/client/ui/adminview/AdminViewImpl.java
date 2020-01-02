@@ -1,13 +1,16 @@
 package client.ui.adminview;
 
+import client.ui.userview.UserView;
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class AdminViewImpl implements AdminView {
     JPanel tablePnl;
     JTable itemTable;
-    // TODO: 제품 제고현황 example
+
     String columnNames[] =
             {"상품번호", "제품명", "제품가격", "판매 갯수", "총액"};
     Object rowData[][] =
@@ -15,7 +18,7 @@ public class AdminViewImpl implements AdminView {
                     {1, "김밥", 1000, 3, 3000},
                     {2, "오믈렛", 3000, 4, 12000},
                     {3, "치킨마요", 4000, 1, 4000}};
-    // TODO: 제품 재고현황 example
+
     String columnItemNames[] =
             {"상품번호", "재료명", "남은 수량"};
     Object rowItemData[][] =
@@ -23,7 +26,7 @@ public class AdminViewImpl implements AdminView {
                     {1, "양파", "300g"},
                     {2, "마늘", "300g"},
                     {3, "파", "300g"}};
-    // TODO: 재고 구매 example
+
     String columnIngredientNames[] =
             {"상품번호", "재료명", "재료 가격", "남은 수량"};
     Object rowIngredientData[][] =
@@ -39,7 +42,7 @@ public class AdminViewImpl implements AdminView {
         setTotalMoneyPnl();
         setCurrentIngredients();
         setBuyIngredients();
-
+        setAddItem();
     }
 
     // 판매총액, 재고현황, 재고구매, 제품추가
@@ -176,17 +179,14 @@ public class AdminViewImpl implements AdminView {
         buyIngredientsPnl.add(btnDelete);
 
         // 총액감소 label
-        decreaseMoneyPnl.setLayout(null);
+        decreaseMoneyPnl.setLayout(new BorderLayout());
         decreaseMoneyPnl.setBounds(100,410,350,100);
         decreaseMoneyPnl.setBackground(Color.orange);
         buyIngredientsPnl.add(decreaseMoneyPnl);
 
-        JLabel lblDecreaseTotalMoney = new JLabel("총 액 ");
-        lblDecreaseTotalMoney.setBounds(50,420,100,50);
-        // TODO: 2020-01-02
-        decreaseMoneyPnl.add(lblDecreaseTotalMoney);
-
-        buyIngredientsPnl.add(lblDecreaseTotalMoney);
+        decreaseMoneyPnl.add(lblTitleDecreasedTotalMoney,BorderLayout.WEST);
+        decreaseMoneyPnl.add(lblDecreasedTotalMoney, BorderLayout.CENTER);
+        buyIngredientsPnl.add(decreaseMoneyPnl);
 
         // table
         JPanel tablePnl = new JPanel();
@@ -205,12 +205,50 @@ public class AdminViewImpl implements AdminView {
         buyIngredientsPnl.add(lblTitleBuyIngredients);
         buyIngredientsPnl.add(scroll);
         buyIngredientsPnl.add(btnBackBuyIngredients);
-        // todo add(buyIngredientsPnl);
     }
 
+    public void setAddItem(){
+        addItemPnl.setLayout(null);
+        lblTitleAddItem.setFont(new Font("맑은고딕", Font.PLAIN, 25));
+        lblTitleAddItem.setBounds(480, 10, 200, 30);
+        addItemPnl.add(lblTitleAddItem);
+
+        JPanel itemListAtAdminPnl = new JPanel();
+        itemListAtAdminPnl.setLayout(new GridLayout(5,5,15,15));
+
+        // item list panel
+        JScrollPane jsp = new JScrollPane(itemListAtAdminPnl, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        jsp.setBounds(0, 100, 1100, 350);
+        addItemPnl.add(jsp);
+
+
+        newItemAddPnl.setLayout(new FlowLayout());
+        newItemAddPnl.add(lblTitleItemToAdd);
+        newItemAddPnl.add(tfItemToAdd);
+        newItemAddPnl.add(lblTitleNewItemPrice);
+        newItemAddPnl.add(tfNewItemPrice);
+
+        allBtnAddItemPnl.setLayout(new FlowLayout());
+        allBtnAddItemPnl.add(btnInsertAddItemPnl);
+        allBtnAddItemPnl.add(btnModifyAddItemPnl);
+        allBtnAddItemPnl.add(btnDeleteAddItemPml);
+
+        newItemAddPnl.setBounds(0,480,1100,50);
+        allBtnAddItemPnl.setBounds(0,530,1100,50);
+
+        addItemPnl.add(newItemAddPnl);
+        addItemPnl.add(allBtnAddItemPnl);
+
+        // btnBack
+        btnBackAddItem.setBounds(940, 580, 100, 50);
+        addItemPnl.add(btnBackAddItem);
+
+
+    }
 
     public void setTotalMoneyTable(JTable table) {
-
+        
     }
 
 
@@ -227,6 +265,6 @@ public class AdminViewImpl implements AdminView {
         btnBackTotalMoney.addActionListener(listener);
         btnBackCurrentIngredients.addActionListener(listener);
         btnBackBuyIngredients.addActionListener(listener);
-
+        btnBackAddItem.addActionListener(listener);
     }
 }

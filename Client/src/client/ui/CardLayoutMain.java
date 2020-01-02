@@ -22,12 +22,14 @@ public class CardLayoutMain extends JFrame {
         this.userView = userView;
         this.adminView = adminView;
 
-        tab.add(UserView.startPnl, "start");
-        tab.add(AdminView.adminStartPanel, "admin");
-        tab.add(AdminView.totalMoneyPnl, "btnTotalMoney");
-        tab.add(AdminView.currentIngredientsPnl, "btnCurrentIngredients");
-        tab.add(AdminView.buyIngredientsPnl, "btnBuyIngredients");
-        cardLayout.show(tab, "start");
+        tab.add(UserView.startPnl, "Start");
+        tab.add(AdminView.adminStartPanel, "Admin");
+        tab.add(AdminView.totalMoneyPnl, "TotalMoney");
+        tab.add(AdminView.currentIngredientsPnl, "CurrentIngredients");
+        tab.add(AdminView.buyIngredientsPnl, "BuyIngredients");
+        tab.add(AdminView.addItemPnl, "AddItem");
+
+        cardLayout.show(tab, "Start");
 
         add(tab, BorderLayout.CENTER);
         setVisible(true);

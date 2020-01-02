@@ -87,8 +87,8 @@ public class UserViewImpl implements UserView {
         selectedItemLists.forEach(item -> {
             if (productModel.PrName == item.productModel.PrName) {
                 item.productModel.PrNumber += 1;
-
                 isExist = true;
+
             }
             totalMoney.addAndGet(item.productModel.PrPrice * item.itemCount + 1);
         });
@@ -113,7 +113,7 @@ public class UserViewImpl implements UserView {
 
 
     @Override
-    public void updateTotalMoney(String money) { // TODO 총 금액
+    public void updateTotalMoney(String money) {
         lblTotalMoney.setText(lblTotalMoney.getText() + money);
     }
 
