@@ -248,7 +248,7 @@ public class AdminViewImpl implements AdminView {
     }
 
     public void setTotalMoneyTable(JTable table) {
-        
+
     }
 
 

@@ -4,7 +4,6 @@ import client.data.Repository;
 import client.data.dao.ProductModel;
 import client.data.datasource.callback.ServerConnectionCallback;
 import client.ui.CardLayoutMain;
-import client.ui.userview.SelectedItemPnl;
 import kotlin.jvm.Volatile;
 
 import java.awt.event.ActionEvent;
@@ -79,16 +78,22 @@ public class Controller implements ActionListener {
             });
             cardLayoutMain.userView.selectedItemLists.forEach(item -> {
                 if (obj.equals(item.btnMinus)) {
-                    repository.minusItem(item.productModel, (productModelVector) -> {
-                        updateUserView(item, productModelVector);
-                    });
+                    if (cardLayoutMain.userView.minusItemCount(item)) {
+                        repository.minusItem(item.productModel, (productModelVector) -> {
+                            updateItemView(item.productModel, productModelVector);
+                        });
+                    }
+
                 } else if (obj.equals(item.btnPlus)) {
-                    repository.selectItem(item.productModel, (productModelVector) -> {
-                        updateUserView(item, productModelVector);
-                    });
+                    if (cardLayoutMain.userView.plusItemCount(item)) {
+                        repository.selectItem(item.productModel, (productModelVector) -> {
+                            updateItemView(item.productModel, productModelVector);
+
+                        });
+                    }
                 } else if (obj.equals(item.btnX)) {
                     repository.exitItem(item.productModel, item.itemCount, (productModelVector) -> {
-                        updateUserView(item, productModelVector);
+                        updateItemView(item.productModel, productModelVector);
                     });
                 }
             });
@@ -103,10 +108,5 @@ public class Controller implements ActionListener {
         cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
     }
 
-    private synchronized void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
-        cardLayoutMain.userView.updateSelectedLists(item.productModel);
-        cardLayoutMain.userView.updateItemLists(productModelVector);
-        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
-        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
-    }
+
 }

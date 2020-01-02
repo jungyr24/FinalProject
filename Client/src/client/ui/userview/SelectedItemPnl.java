@@ -21,10 +21,7 @@ public class SelectedItemPnl extends JPanel {
     public SelectedItemPnl(ProductModel productModel) {
         this.productModel = productModel;
 
-        itemCount = productModel.PrNumber;
-        lblItemQuantity.setText(Integer.toString(itemCount));
-
-        if (productModel.IsSell == false) {
+        if (!this.productModel.IsSell) {
             btnPlus.setEnabled(false);
         }
         if (productModel.PrNumber < 0) {
@@ -58,10 +55,27 @@ public class SelectedItemPnl extends JPanel {
 
     }
 
+    public void addBtnClicked() {
+        itemCount++;
+        lblItemQuantity.setText(String.valueOf(itemCount));
+    }
+
+    public boolean minusBtnClicked() {
+        if (itemCount > 1) {
+            itemCount--;
+            lblItemQuantity.setText(String.valueOf(itemCount));
+            return true;
+        } else return false;
+    }
+
+
     public void addListener(ActionListener listener) {
-        btnMinus.addActionListener(listener);
-        btnPlus.addActionListener(listener);
-        btnX.addActionListener(listener);
+        if (btnMinus.getActionListeners().length == 0)
+            btnMinus.addActionListener(listener);
+        if (btnPlus.getActionListeners().length == 0)
+            btnPlus.addActionListener(listener);
+        if (btnX.getActionListeners().length == 0)
+            btnX.addActionListener(listener);
     }
 
 }
