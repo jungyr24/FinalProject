@@ -1,6 +1,7 @@
 package client.ui.adminview;
 
 import client.data.dao.IngredientModel;
+import client.data.dao.ProductModel;
 import client.ui.holder.AddItemHolder;
 import client.ui.holder.BuyIngredientsHolder;
 import client.ui.holder.CurrentIngrdntHolder;
@@ -22,6 +23,9 @@ public interface AdminView {
     JButton btnTotalMoney = new JButton("총 매출"), btnCurrentIngredients = new JButton("재고 현황"),
             btnBuyIngredients = new JButton("재고 구매"), btnAddItem = new JButton("제품 추가"), btnAdminClient = new JButton("사용자");
 
-    void updateTable(Vector<IngredientModel> ingredientModels);
+    void updateCurrentTable(Vector<IngredientModel> ingredientModels);
+    void updateBuyIngredientTable(Vector<IngredientModel> ingredientModels);
+    void totalMoneyTable(Vector<ProductModel> productModels);
+
     void addAdminListener(ActionListener listener);
 }

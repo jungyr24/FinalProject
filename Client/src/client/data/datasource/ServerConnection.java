@@ -133,8 +133,8 @@ public class ServerConnection {
         send(jsonObject.toString());
     }
 
-    public void totalMoney(ProductModel item, SelectItemCallback callback) {
-
+    public void totalMoney(SelectItemCallback callback) {
+// TODO: 2020-01-02  
     }
 
     public void currentIngredients(GetTableCallback callback) {

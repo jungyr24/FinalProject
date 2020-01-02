@@ -58,13 +58,20 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public void totalMoney(ProductModel item, SelectItemCallback callback) {
-        serverConnection.totalMoney(item, callback);
+    public void totalMoney(SelectItemCallback callback) {
+       // serverConnection.totalMoney();
+        // TODO: 2020-01-02  
     }
+    
 
     @Override
     public void currentIngredients(GetTableCallback callback) {
         serverConnection.currentIngredients(callback);
+    }
+
+    @Override
+    public void buyIngredient(GetTableCallback callback) {
+// TODO: 2020-01-02  
     }
 
 

@@ -63,20 +63,18 @@ public class Controller implements ActionListener {
                 cardLayoutMain.changeDialog("Start");
             }
             changeDialogFlag = !changeDialogFlag;
-        } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) {
+        } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) { // 재고 현황
             cardLayoutMain.changeDialog("CurrentIngredients");
-            // TODO: 2020-01-02
-            repository.currentIngredients(new GetTableCallback() {
-                @Override
-                public void IgSuccess(Vector<IngredientModel> lists) {
-                    cardLayoutMain.adminView.updateTable(lists);
-                }
-            });
+            repository.currentIngredients(lists -> cardLayoutMain.adminView.updateCurrentTable(lists));
 
-        } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) {
+        } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) { // 재고 구매
             cardLayoutMain.changeDialog("BuyIngredients");
-        } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {
+            repository.buyIngredient(lists -> cardLayoutMain.adminView.updateBuyIngredientTable(lists));
+
+        } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) { // 총 매출
             cardLayoutMain.changeDialog("TotalMoney");
+            repository.totalMoney(lists -> cardLayoutMain.adminView.totalMoneyTable(lists));
+
         } else if (cardLayoutMain.adminView.btnAddItem.equals(obj)) {
             cardLayoutMain.changeDialog("AddItem");
         } else if (cardLayoutMain.adminView.TOTAL_MONEY_HOLDER.btnBackTotalMoney.equals(obj) || cardLayoutMain.adminView.BUY_INGREDIENTS_HOLDER.btnBackBuyIngredients.equals(obj)

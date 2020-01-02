@@ -9,10 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 public class AdminViewImpl implements AdminView {
-    String colTotalMoney[] = {};
-    String rowTotalMoney[][] = {};
-
-    JTable table;
 
     public AdminViewImpl() {
         setBtnAdminWhatToDoPnl();
@@ -76,8 +72,8 @@ public class AdminViewImpl implements AdminView {
 
 
         // table
-
-        JScrollPane jsp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        TOTAL_MONEY_HOLDER.table = new JTable(TOTAL_MONEY_HOLDER.rowTotalMoney, TOTAL_MONEY_HOLDER.colTotalMoney);
+        JScrollPane jsp = new JScrollPane(TOTAL_MONEY_HOLDER.table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         // btnBack
         TOTAL_MONEY_HOLDER.btnBackTotalMoney.setBounds(940, 580, 100, 50);
         TOTAL_MONEY_HOLDER.totalMoneyPnl.add(TOTAL_MONEY_HOLDER.lblTitleTotalMoney);
@@ -88,15 +84,6 @@ public class AdminViewImpl implements AdminView {
     }
 
 
-    // TODO: 2020-01-01 Override
-    public void setTotalMoneyPnlTable(Vector<ProductModel> lists) { // 총 매출
-        /*lblTotalSalesMoney.setText(Integer.toString(totalMoney));
-        JScrollPane scroll = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll.setBounds(40, 70, 1000, 400);
-        totalMoneyPnl.add(scroll);*/
-    }
-
 
     public void setCurrentIngredients() { // 제품 재고 현황
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.setLayout(null);
@@ -106,11 +93,13 @@ public class AdminViewImpl implements AdminView {
         CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients.setBounds(480, 10, 200, 30);
 
         // table
-
+        CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.rowCurrentIngredient, CURRENT_INGRDNT_HOLDER.colCurrentIngredient);
+        JScrollPane jsp = new JScrollPane(CURRENT_INGRDNT_HOLDER.table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         // btnBack
         CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients.setBounds(940, 580, 100, 50);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.lblTitleCurrentIngredients);
+        CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(jsp);
         CURRENT_INGRDNT_HOLDER.currentIngredientsPnl.add(CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients);
 
     }
@@ -191,27 +180,6 @@ public class AdminViewImpl implements AdminView {
 
     }
 
-    public void setTotalMoneyTable(JTable table) {
-
-    }
-
-
-    @Override
-    public void updateTable(Vector<IngredientModel> lists) {
-        colTotalMoney[0] = "No";
-        colTotalMoney[1] = "재고";
-        colTotalMoney[2] = "재고수량";
-
-        for (int i = 0; i < lists.size(); i++) {
-            for (int j = 0; j < 3; j++) {
-                rowTotalMoney[i][j] = Integer.toString(lists.get(i).IgCode);
-                rowTotalMoney[i][j] = lists.get(i).IgName;
-                rowTotalMoney[i][j] = Integer.toString(lists.get(i).IgNumber);
-            }
-        }
-        table = new JTable(rowTotalMoney, colTotalMoney);
-    }
-
 
     @Override
     public void addAdminListener(ActionListener listener) {
@@ -227,5 +195,42 @@ public class AdminViewImpl implements AdminView {
         CURRENT_INGRDNT_HOLDER.btnBackCurrentIngredients.addActionListener(listener);
         BUY_INGREDIENTS_HOLDER.btnBackBuyIngredients.addActionListener(listener);
         ADD_ITEM_HOLDER.btnBackAddItem.addActionListener(listener);
+    }
+
+    @Override
+    public void updateCurrentTable(Vector<IngredientModel> lists) {
+        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[0] = "No";
+        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[1] = "재고";
+        CURRENT_INGRDNT_HOLDER.colCurrentIngredient[2] = "재고수량";
+
+        for (int i = 0; i < lists.size(); i++) {
+            for (int j = 0; j < 3; j++) {
+                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = Integer.toString(lists.get(i).IgCode);
+                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = lists.get(i).IgName;
+                CURRENT_INGRDNT_HOLDER.rowCurrentIngredient[i][j] = Integer.toString(lists.get(i).IgNumber);
+            }
+        }
+        CURRENT_INGRDNT_HOLDER.table = new JTable(CURRENT_INGRDNT_HOLDER.rowCurrentIngredient, CURRENT_INGRDNT_HOLDER.colCurrentIngredient);
+    }
+
+    @Override
+    public void updateBuyIngredientTable(Vector<IngredientModel> lists) {
+        BUY_INGREDIENTS_HOLDER.colBuyIngredient[0] = "No";
+        BUY_INGREDIENTS_HOLDER.colBuyIngredient[1] = "재고";
+        BUY_INGREDIENTS_HOLDER.colBuyIngredient[2] = "재고수량";
+
+        for (int i = 0; i < lists.size(); i++) {
+            for (int j = 0; j < 3; j++) {
+                BUY_INGREDIENTS_HOLDER.rowBuyIngredient[i][j] = Integer.toString(lists.get(i).IgCode);
+                BUY_INGREDIENTS_HOLDER.rowBuyIngredient[i][j] = lists.get(i).IgName;
+                BUY_INGREDIENTS_HOLDER.rowBuyIngredient[i][j] = Integer.toString(lists.get(i).IgNumber);
+            }
+        }
+        BUY_INGREDIENTS_HOLDER.table = new JTable(BUY_INGREDIENTS_HOLDER.rowBuyIngredient, BUY_INGREDIENTS_HOLDER.colBuyIngredient);
+    }
+
+    @Override
+    public void totalMoneyTable(Vector<ProductModel> productModels) {
+
     }
 }
