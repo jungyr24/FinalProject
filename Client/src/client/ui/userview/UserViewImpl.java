@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 public class UserViewImpl implements UserView {
-
+    boolean isExist = false;
     // TODO: 2019-12-31  Vector<ProductModel> productModels = ;
 
 
@@ -77,8 +77,6 @@ public class UserViewImpl implements UserView {
         // 구매 버튼
         btnPay.setBounds(830, 600, 100, 50);
         startPnl.add(btnPay);
-
-        // todo add(startPnl);
     }
 
 
@@ -101,16 +99,28 @@ public class UserViewImpl implements UserView {
 
     @Override
     public void updateSelectedLists(ProductModel productModel) { // 선택된 상품 목록
-        //TODO
-        // 0. layout 배치 필요
-        // 1. 없으면 추가 2. 기존에 있으면 update하는 로직 필요 (엎고 다시)
-        // 3. SelectedItemPnl 안에 productModel에 isShell이 false면 증가 못하게 바꾸는 코드 필요
-        // 4. lblItemQuantity 가 1보다 아래로 안내려가도록 - 버튼 disable 시키는 코드 필요
+        selectedItemLists.forEach(item -> {
+            if (productModel.PrName == item.productModel.PrName) {
+                item.productModel.PrNumber += 1;
+                isExist = true;
+            }
+        });
 
-        SelectedItemPnl item = new SelectedItemPnl(productModel);
-        selectedItemLists.add(item);
-        selectedListPnl.add(item);
-        selectedListPnl.updateUI();
+        if (isExist == true) {
+            selectedListPnl.removeAll();
+            selectedItemLists.forEach(item -> {
+                selectedListPnl.add(item);
+            });
+            selectedListPnl.updateUI();
+            isExist = false;
+        } else {
+            SelectedItemPnl item = new SelectedItemPnl(productModel);
+            selectedItemLists.add(item);
+            selectedListPnl.add(item);
+            selectedListPnl.updateUI();
+        }
+
+
     }
 
 

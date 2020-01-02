@@ -58,7 +58,7 @@ public class Controller implements ActionListener {
             }
             changeDialogFlag = !changeDialogFlag;
         } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) {
-            cardLayoutMain.changeDialog("btnCurrentItems");
+            cardLayoutMain.changeDialog("btnCurrentIngredients");
         } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) {
             cardLayoutMain.changeDialog("btnBuyIngredients");
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {
@@ -95,8 +95,6 @@ public class Controller implements ActionListener {
                 }
             });
         }
-
-
     }
 
     private void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
