@@ -2,10 +2,10 @@ package client.ui.adminview;
 
 import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
-import client.ui.holder.AddItemHolder;
-import client.ui.holder.BuyIngredientsHolder;
-import client.ui.holder.CurrentIngrdntHolder;
-import client.ui.holder.TotalMoneyHolder;
+import client.ui.adminview.holder.AddItemHolder;
+import client.ui.adminview.holder.BuyIngredientsHolder;
+import client.ui.adminview.holder.CurrentIngrdntHolder;
+import client.ui.adminview.holder.TotalMoneyHolder;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
