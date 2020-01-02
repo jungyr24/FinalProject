@@ -35,7 +35,6 @@ public class SelectedItemPnl extends JPanel {
         lblSelectedItemName.setText(productModel.PrName);
         lblSelectedItemName.setFont(new Font("맑은고딕", Font.PLAIN, 20));
 
-        lblSelectedItemPrice.setText(Integer.toString(3));
         lblSelectedItemPrice.setFont(new Font("맑은고딕", Font.PLAIN, 20));
 
         itemNameAndMoneyPnl.add(lblSelectedItemName, BorderLayout.CENTER);

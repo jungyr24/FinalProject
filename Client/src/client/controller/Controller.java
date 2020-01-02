@@ -71,10 +71,7 @@ public class Controller implements ActionListener {
             {
                 if (obj.equals(item.btnItem)) {
                     repository.selectItem(item.productModel, (productModelVector) -> {
-                        cardLayoutMain.userView.updateSelectedLists(item.productModel);
-                        cardLayoutMain.userView.updateItemLists(productModelVector);
-                        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
-                        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+                        updateItemView(item.productModel, productModelVector);
                     });
 
                 }
@@ -97,7 +94,14 @@ public class Controller implements ActionListener {
         }
     }
 
-    private void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
+    private synchronized void updateItemView(ProductModel productModel, Vector<ProductModel> productModelVector) {
+        cardLayoutMain.userView.updateSelectedLists(productModel);
+        cardLayoutMain.userView.updateItemLists(productModelVector);
+        cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
+        cardLayoutMain.userView.addSelectedItemListener(this::actionPerformed);
+    }
+
+    private synchronized void updateUserView(SelectedItemPnl item, Vector<ProductModel> productModelVector) {
         cardLayoutMain.userView.updateSelectedLists(item.productModel);
         cardLayoutMain.userView.updateItemLists(productModelVector);
         cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
