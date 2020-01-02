@@ -156,9 +156,8 @@ public class AdminViewImpl implements AdminView {
 
     public void setBuyIngredients() { // 재고 구매
         buyIngredientsPnl.setLayout(null);
-        lblTitleBuyIngredients.setText("Buy Items");
-        lblTitleBuyIngredients.setFont(new Font("맑은고딕", Font.PLAIN, 25));
-        lblTitleBuyIngredients.setBounds(480, 10, 200, 30);
+        lblIngredientsToAdd.setFont(new Font("맑은고딕", Font.PLAIN, 25));
+        lblIngredientsToAdd.setBounds(480, 10, 200, 30);
 
         // combo box
         String[] str1 = {"재고"};
@@ -202,12 +201,12 @@ public class AdminViewImpl implements AdminView {
         // btnBack
         btnBackBuyIngredients.setBounds(940, 580, 100, 50);
 
-        buyIngredientsPnl.add(lblTitleBuyIngredients);
+        buyIngredientsPnl.add(lblIngredientsToAdd);
         buyIngredientsPnl.add(scroll);
         buyIngredientsPnl.add(btnBackBuyIngredients);
     }
 
-    public void setAddItem(){
+    public void setAddItem(){ // 제품 추가
         addItemPnl.setLayout(null);
         lblTitleAddItem.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         lblTitleAddItem.setBounds(480, 10, 200, 30);
