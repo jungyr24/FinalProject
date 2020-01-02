@@ -12,4 +12,6 @@ public interface Repository {
     void minusItem(ProductModel item, SelectItemCallback callback);
 
     void exitItem(ProductModel item, int itemCount, SelectItemCallback callback);
+
+    void buyItem();
 }

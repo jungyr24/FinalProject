@@ -31,6 +31,8 @@ public interface UserView {
 
     void removeItem(SelectedItemPnl item);
 
+    void clearItem();
+
     void addListener(ActionListener listener);
 
     void addItemListListener(ActionListener listener);

@@ -125,4 +125,10 @@ public class ServerConnection {
         }
         ).start();
     }
+
+    public void buyItem() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("buy", 0);
+        send(jsonObject.toString());
+    }
 }

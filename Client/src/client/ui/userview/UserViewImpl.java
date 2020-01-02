@@ -142,7 +142,6 @@ public class UserViewImpl implements UserView {
     public void removeItem(SelectedItemPnl item) {
         selectedListPnl.remove(item);
         selectedItemLists.remove(item);
-        item.updateItemCount();
         selectedListPnl.updateUI();
     }
 
@@ -164,5 +163,12 @@ public class UserViewImpl implements UserView {
         selectedItemLists.forEach(selectedItem -> {
             selectedItem.addListener(listener);
         });
+    }
+
+    @Override
+    public void clearItem() {
+        selectedListPnl.removeAll();
+        selectedItemLists.clear();
+        selectedListPnl.updateUI();
     }
 }
