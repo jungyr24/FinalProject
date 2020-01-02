@@ -1,6 +1,5 @@
 package client.data.datasource.callback;
 
-import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
 
 import java.util.Vector;
