@@ -41,7 +41,7 @@ public class SelectedItemPnl extends JPanel {
 
 
         itemQuantityPnl.setBounds(190, 10, 100, 50);
-        itemQuantityPnl.setBackground(Color.darkGray);
+        itemQuantityPnl.setBackground(Color.white);
         itemQuantityPnl.setLayout(new GridLayout(1, 4));
 
         itemQuantityPnl.add(btnMinus);

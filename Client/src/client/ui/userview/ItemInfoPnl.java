@@ -20,6 +20,7 @@ public class ItemInfoPnl extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.productModel = productModel;
         btnItem.setText(Integer.toString(index));
+        btnItem.setBackground(new Color(0x87C24C));
         //btnItem.setPreferredSize(new Dimension(100,50));
         lblItemPrice.setText(String.valueOf(productModel.PrPrice));
         lblItemName.setText(productModel.PrName);
