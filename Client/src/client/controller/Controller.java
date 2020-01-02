@@ -1,7 +1,9 @@
 package client.controller;
 
 import client.data.Repository;
+import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
+import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 import client.ui.CardLayoutMain;
 import kotlin.jvm.Volatile;
@@ -31,13 +33,17 @@ public class Controller implements ActionListener {
                 cardLayoutMain.userView.addItemListListener(Controller.this::actionPerformed);
                 cardLayoutMain.userView.addListener(Controller.this::actionPerformed);
                 cardLayoutMain.adminView.addAdminListener(Controller.this::actionPerformed);
+
             }
 
             @Override
             public void error(String error) {
                 System.out.println("에러 발생 : " + error);
             }
+
+
         });
+
     }
 
 
@@ -59,11 +65,18 @@ public class Controller implements ActionListener {
             changeDialogFlag = !changeDialogFlag;
         } else if (cardLayoutMain.adminView.btnCurrentIngredients.equals(obj)) {
             cardLayoutMain.changeDialog("CurrentIngredients");
+            // TODO: 2020-01-02
+            repository.currentIngredients(new GetTableCallback() {
+                @Override
+                public void IgSuccess(Vector<IngredientModel> lists) {
+                    cardLayoutMain.adminView.updateTable(lists);
+                }
+            });
+
         } else if (cardLayoutMain.adminView.btnBuyIngredients.equals(obj)) {
             cardLayoutMain.changeDialog("BuyIngredients");
         } else if (cardLayoutMain.adminView.btnTotalMoney.equals(obj)) {
             cardLayoutMain.changeDialog("TotalMoney");
-
         } else if (cardLayoutMain.adminView.btnAddItem.equals(obj)) {
             cardLayoutMain.changeDialog("AddItem");
         } else if (cardLayoutMain.adminView.TOTAL_MONEY_HOLDER.btnBackTotalMoney.equals(obj) || cardLayoutMain.adminView.BUY_INGREDIENTS_HOLDER.btnBackBuyIngredients.equals(obj)

@@ -1,6 +1,8 @@
 package client.data.datasource;
 
+import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
+import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 import client.util.JsonUtil;
@@ -77,8 +79,7 @@ public class ServerConnection {
                 e.printStackTrace();
             }
 
-        }
-        ).start();
+        }).start();
     }
 
     public void minusItem(ProductModel item, SelectItemCallback callback) {
@@ -130,5 +131,31 @@ public class ServerConnection {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("buy", total);
         send(jsonObject.toString());
+    }
+
+    public void totalMoney(ProductModel item, SelectItemCallback callback) {
+
+    }
+
+    public void currentIngredients(GetTableCallback callback) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("ingredient", 0);
+        send(jsonObject.toString());
+        new Thread(() -> {
+            try {
+                String data = reader.readLine();
+                JsonArray array = (JsonArray) parser.parse(data);
+                Vector<IngredientModel> vector = new Vector<>();
+                for (JsonElement object : array) {
+                    IngredientModel model = JsonUtil.INSTANCE.getIngredientModel(object);
+                    vector.add(model);
+                }
+                callback.IgSuccess(vector);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        ).start();
     }
 }

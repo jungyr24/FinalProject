@@ -2,6 +2,7 @@ package client.data;
 
 import client.data.dao.ProductModel;
 import client.data.datasource.ServerConnection;
+import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 
@@ -55,4 +56,16 @@ public class RepositoryImpl implements Repository {
     public void buyItem(int total) {
         serverConnection.buyItem(total);
     }
+
+    @Override
+    public void totalMoney(ProductModel item, SelectItemCallback callback) {
+        serverConnection.totalMoney(item, callback);
+    }
+
+    @Override
+    public void currentIngredients(GetTableCallback callback) {
+        serverConnection.currentIngredients(callback);
+    }
+
+
 }

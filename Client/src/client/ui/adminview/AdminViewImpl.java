@@ -1,5 +1,6 @@
 package client.ui.adminview;
 
+import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
 
 import javax.swing.*;
@@ -116,7 +117,6 @@ public class AdminViewImpl implements AdminView {
         // combo box
 
 
-
         // 재고 수량 label
         BUY_INGREDIENTS_HOLDER.lblQuantityToAdd.setBounds(100, 250, 100, 70);
         BUY_INGREDIENTS_HOLDER.tfQuantityToAdd.setBounds(250, 250, 250, 70);
@@ -158,9 +158,7 @@ public class AdminViewImpl implements AdminView {
         ADD_ITEM_HOLDER.addItemPnl.add(ADD_ITEM_HOLDER.lblTitleAddItem);
 
 
-
         // item list panel
-
 
 
         ADD_ITEM_HOLDER.newItemAddPnl.setLayout(new FlowLayout());
@@ -191,6 +189,13 @@ public class AdminViewImpl implements AdminView {
 
     }
 
+
+    @Override
+    public void updateTable(Vector<IngredientModel> lists) {
+        for (int i = 0; i < lists.size(); i++) {
+            System.out.println(lists.get(i).IgName);
+        }
+    }
 
     @Override
     public void addAdminListener(ActionListener listener) {

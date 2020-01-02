@@ -1,6 +1,7 @@
 package client.data;
 
 import client.data.dao.ProductModel;
+import client.data.datasource.callback.GetTableCallback;
 import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 
@@ -14,4 +15,8 @@ public interface Repository {
     void exitItem(ProductModel item, int itemCount, SelectItemCallback callback);
 
     void buyItem(int total);
+
+    void totalMoney(ProductModel item, SelectItemCallback callback);
+
+    void currentIngredients(GetTableCallback callback);
 }
