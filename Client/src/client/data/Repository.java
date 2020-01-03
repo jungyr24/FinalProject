@@ -3,6 +3,11 @@ package client.data;
 import client.data.dao.ProductModel;
 import client.data.datasource.callback.ServerConnectionCallback;
 
+/**
+ * 서버로 요청할 함수들에 대한 인터페이스
+ *
+ * @author 조재영
+ */
 public interface Repository {
     void connectServer(ServerConnectionCallback callback);
 
@@ -19,7 +24,4 @@ public interface Repository {
     void buyIngredient(ServerConnectionCallback.GetTableCallback callback);
 
     void totalMoney(ServerConnectionCallback.TotalMoneyCallback callback);
-
-
-
 }

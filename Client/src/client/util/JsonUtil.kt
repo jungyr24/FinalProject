@@ -4,6 +4,10 @@ import client.data.dao.IngredientModel
 import client.data.dao.ProductModel
 import com.google.gson.JsonElement
 
+/**
+ * Json 데이터 Parsing을 위한 Singleton class
+ * 이 부분만 kotlin 코드를 이용하였음.
+ */
 object JsonUtil {
     fun getProductModel(obj: JsonElement): ProductModel {
         val PrCode: Int = obj.asJsonObject.get("PrCode").asInt

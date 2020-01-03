@@ -6,6 +6,13 @@ import client.data.datasource.callback.ServerConnectionCallback;
 
 import java.util.Vector;
 
+/**
+ * 데이터 분기를 위해 필요한 클래스
+ * 하지만, 여기서는 DataSource가 하나만 존재하기 떄문에 같은 작업을 반복하는 역할을 한다.
+ * 추후 기능확장을 위해 남겨두었음.
+ *
+ * @author 조재영
+ */
 public class RepositoryImpl implements Repository {
     private static Repository INSTANCE = null;
     private ServerConnection serverConnection;
@@ -69,7 +76,6 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void buyIngredient(ServerConnectionCallback.GetTableCallback callback) {
-// TODO: 2020-01-02  
     }
 
 

@@ -28,11 +28,14 @@ public class ItemInfoPnl extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.productModel = productModel;
         btnItem.setText(Integer.toString(index));
-        btnItem.setPreferredSize(new Dimension(90,30));
+
+        btnItem.setBackground(new Color(0x87C24C));
+        btnItem.setPreferredSize(new Dimension(90, 30));
+
         lblItemPrice.setText(String.valueOf(productModel.PrPrice));
         lblItemName.setText(productModel.PrName);
-        lblItemName.setFont(new Font("맑은고딕",Font.PLAIN,12));
-        lblItemPrice.setFont(new Font("맑은고딕",Font.PLAIN,12));
+        lblItemName.setFont(new Font("맑은고딕", Font.PLAIN, 12));
+        lblItemPrice.setFont(new Font("맑은고딕", Font.PLAIN, 12));
         itemIndex = index;
 
 
