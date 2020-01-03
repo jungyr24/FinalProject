@@ -9,6 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+/**
+ * AdminView 초기화면의 버튼 네 개에 해당하는 각 페이지를 생성하는 클래스
+ *
+ * @author 정유라
+ */
 public class AdminViewImpl implements AdminView {
 
     public AdminViewImpl() {
@@ -22,9 +27,6 @@ public class AdminViewImpl implements AdminView {
         adminStartPanel.setLayout(new BorderLayout());
         btnAdminWhatToDo.setLayout(new GridLayout(2, 2, 50, 50));
         btnAdminWhatToDo.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-
-        // 버튼 4개 생성
-
 
         // 버튼 set
         btnTotalMoney.setFont(new Font("맑은고딕", Font.PLAIN, 30));
@@ -47,12 +49,12 @@ public class AdminViewImpl implements AdminView {
     }
 
 
-    public void setTotalMoneyPnl(int totalMoney) {
+    public void setTotalMoneyPnl(int totalMoney) { // 총매출
         TOTAL_MONEY_HOLDER.totalMoneyPnl.setLayout(null);
         TOTAL_MONEY_HOLDER.lblTitleTotalMoney.setFont(new Font("맑은고딕", Font.PLAIN, 25));
         TOTAL_MONEY_HOLDER.lblTitleTotalMoney.setBounds(480, 10, 200, 30);
 
-        // 총매출
+
         TOTAL_MONEY_HOLDER.totalSalesPnl.setBackground(new Color(0xF2C98E));
         TOTAL_MONEY_HOLDER.totalSalesPnl.setBounds(40, 490, 1000, 70);
         TOTAL_MONEY_HOLDER.totalSalesPnl.setLayout(null);

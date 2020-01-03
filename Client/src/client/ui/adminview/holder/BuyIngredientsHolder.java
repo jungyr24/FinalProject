@@ -2,6 +2,9 @@ package client.ui.adminview.holder;
 
 import javax.swing.*;
 
+/**
+ * AdminView - 재고구매 페이지를 구성하는 컴포넌트들
+ */
 public class BuyIngredientsHolder {
     public JPanel decreaseMoneyPnl = new JPanel(), buyIngredientsPnl = new JPanel();
     public JComboBox comboBox = new JComboBox();

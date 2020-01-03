@@ -10,7 +10,9 @@ import client.ui.adminview.holder.TotalMoneyHolder;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
-
+/**
+ *  AdminView 초기화면을 구성하고 서버로부터 데이터를 받기위해 Controller와 연결될 함수들 정의
+ */
 public interface AdminView {
     TotalMoneyHolder TOTAL_MONEY_HOLDER = new TotalMoneyHolder();
     BuyIngredientsHolder BUY_INGREDIENTS_HOLDER = new BuyIngredientsHolder();

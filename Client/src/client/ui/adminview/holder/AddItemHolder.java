@@ -2,6 +2,9 @@ package client.ui.adminview.holder;
 
 import javax.swing.*;
 
+/**
+ * AdminView - 제품추가 페이지를 구성하는 컴포넌트들
+ */
 public class AddItemHolder {
     public JPanel addItemPnl = new JPanel(), allBtnAddItemPnl = new JPanel(), newItemAddPnl = new JPanel();
     public JLabel lblTitleAddItem = new JLabel("제품 추가"), lblTitleItemToAdd = new JLabel("추가할 제품"), lblTitleNewItemPrice = new JLabel("가격");

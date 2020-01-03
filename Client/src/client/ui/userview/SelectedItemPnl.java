@@ -6,7 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-
+/**
+ * 선택된 상품을 구성하는 클래스
+ *
+ * @author 정유라
+ */
 public class SelectedItemPnl extends JPanel {
 
     JPanel itemNameAndMoneyPnl = new JPanel();

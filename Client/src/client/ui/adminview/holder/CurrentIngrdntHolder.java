@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
+/**
+ * AdminView - 재고 현황 페이지를 구성하는 컴포넌트들
+ */
 public class CurrentIngrdntHolder {
     public JPanel currentIngredientsPnl = new JPanel();
     public JLabel lblTitleCurrentIngredients = new JLabel("재료 재고 현황");

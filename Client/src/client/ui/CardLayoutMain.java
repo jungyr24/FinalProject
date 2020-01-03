@@ -6,6 +6,12 @@ import client.ui.userview.UserView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * AdminView와 UserView를 담고있는 frame
+ * CardLayout을 통해 화면 전환한다.
+ *
+ * @author 정유라
+ */
 public class CardLayoutMain extends JFrame {
     CardLayout cardLayout;
     Container tab;
@@ -29,7 +35,7 @@ public class CardLayoutMain extends JFrame {
         tab.add(AdminView.BUY_INGREDIENTS_HOLDER.buyIngredientsPnl, "BuyIngredients");
         tab.add(AdminView.ADD_ITEM_HOLDER.addItemPnl, "AddItem");
 
-        cardLayout.show(tab, "Start");
+        cardLayout.show(tab, "TotalMoney");
 
         add(tab, BorderLayout.CENTER);
         setVisible(true);

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * UserView 초기화면을 구성하고 서버로부터 데이터를 받기위해 Controller와 연결될 함수들 정의
+ */
 public interface UserView {
     JPanel startPnl = new JPanel(), itemListPnl = new JPanel(), selectedListPnl = new JPanel();
     JButton btnAdminClient = new JButton(), btnPay = new JButton("구매");

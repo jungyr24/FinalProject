@@ -7,6 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+/**
+ * UserView 초기화면을 생성하는 클래스
+ *
+ * @author 정유라
+ */
+
+
 public class UserViewImpl implements UserView {
     boolean isExist = false;
 

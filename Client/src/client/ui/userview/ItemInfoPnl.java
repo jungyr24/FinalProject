@@ -6,6 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * UserView의 상품(버튼, 이름, 가격)을 구성하는 클래스
+ *
+ * @author 정유라
+ */
+
 public class ItemInfoPnl extends JPanel {
     public ProductModel productModel;
     public JButton btnItem = new JButton();
