@@ -1,12 +1,33 @@
 package client.ui.adminview;
 
+import client.data.dao.IngredientModel;
+import client.data.dao.ProductModel;
+import client.ui.adminview.holder.AddItemHolder;
+import client.ui.adminview.holder.BuyIngredientsHolder;
+import client.ui.adminview.holder.CurrentIngrdntHolder;
+import client.ui.adminview.holder.TotalMoneyHolder;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public interface AdminView {
-    JPanel adminStartPanel = new JPanel(), btnAdminWhatToDo = new JPanel(), totalMoneyPnl = new JPanel(), totalSalesPnl = new JPanel(), currentIngredientsPnl = new JPanel(), buyIngredientsPnl = new JPanel(), AdminClientButtonPnl = new JPanel();
-    JLabel lblWhatToDo = new JLabel(), lblTotalSales = new JLabel(), lblTotalSalesMoney = new JLabel();
-    JButton btnTotalMoney = new JButton("Item Total Money"), btnCurrentItems = new JButton("Current Items"), btnBuyItem = new JButton("Buy Items"), btnAddItem = new JButton("Add Items"), btnAdminClient = new JButton(), btnBack = new JButton("Back");
+    TotalMoneyHolder TOTAL_MONEY_HOLDER = new TotalMoneyHolder();
+    BuyIngredientsHolder BUY_INGREDIENTS_HOLDER = new BuyIngredientsHolder();
+    CurrentIngrdntHolder CURRENT_INGRDNT_HOLDER = new CurrentIngrdntHolder();
+    AddItemHolder ADD_ITEM_HOLDER = new AddItemHolder();
+    JPanel adminStartPanel = new JPanel(), btnAdminWhatToDo = new JPanel();
+
+
+    JPanel AdminClientButtonPnl = new JPanel();
+    JButton btnTotalMoney = new JButton("총 매출"), btnCurrentIngredients = new JButton("재고 현황"),
+            btnBuyIngredients = new JButton("재고 구매"), btnAddItem = new JButton("제품 추가"), btnAdminClient = new JButton("사용자");
+
+    void updateCurrentTable(Vector<IngredientModel> ingredientModels);
+
+    void updateBuyIngredientTable(Vector<IngredientModel> ingredientModels);
+
+    void totalMoneyTable(Vector<ProductModel> productModels, int totalMoney);
 
     void addAdminListener(ActionListener listener);
 }

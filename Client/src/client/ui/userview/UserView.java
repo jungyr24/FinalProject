@@ -7,29 +7,29 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public interface UserView {
     JPanel startPnl = new JPanel(), itemListPnl = new JPanel(), selectedListPnl = new JPanel();
     JButton btnAdminClient = new JButton(), btnPay = new JButton("구매");
-    JLabel lblInsertMoney = new JLabel("투입 금액 "), lblTotalMoney = new JLabel("총 금액 "), lblChangeMoney = new JLabel("거스름돈 ");
+    JLabel lblTotalMoney = new JLabel("총 금액 ");
     List<ItemInfoPnl> itemLists = new LinkedList<>();
     List<SelectedItemPnl> selectedItemLists = new LinkedList<>();
-
+    AtomicInteger totalMoney = new AtomicInteger();
 
     void updateItemLists(Vector<ProductModel> lists);
 
-
-    // TODO: 2019-12-31 파라미터, 여기 i 어떻게?
+    void updateMoney();
 
     void updateSelectedLists(ProductModel productModel);
 
-    void updateInsertMoney(String money);
+    boolean plusItemCount(SelectedItemPnl item);
 
-    void updateChangesMoney(String money);
+    boolean minusItemCount(SelectedItemPnl item);
 
-    void updateTotalMoney(String money);
+    void removeItem(SelectedItemPnl item);
 
-    void showUserInterface();
+    void clearItem();
 
     void addListener(ActionListener listener);
 

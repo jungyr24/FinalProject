@@ -7,12 +7,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CardLayoutMain extends JFrame {
-    CardLayout cardLayout;
-    Container tab;
     public UserView userView;
     public AdminView adminView;
+    CardLayout cardLayout;
+    Container tab;
 
     public CardLayoutMain(UserView userView, AdminView adminView) {
+        setResizable(false);
         cardLayout = new CardLayout();
         tab = new JPanel();
         tab.setSize(1100, 700);
@@ -21,10 +22,14 @@ public class CardLayoutMain extends JFrame {
         this.userView = userView;
         this.adminView = adminView;
 
-        tab.add(UserView.startPnl, "start");
-        tab.add(AdminView.adminStartPanel, "admin");
+        tab.add(UserView.startPnl, "Start");
+        tab.add(AdminView.adminStartPanel, "Admin");
+        tab.add(AdminView.TOTAL_MONEY_HOLDER.totalMoneyPnl, "TotalMoney");
+        tab.add(AdminView.CURRENT_INGRDNT_HOLDER.currentIngredientsPnl, "CurrentIngredients");
+        tab.add(AdminView.BUY_INGREDIENTS_HOLDER.buyIngredientsPnl, "BuyIngredients");
+        tab.add(AdminView.ADD_ITEM_HOLDER.addItemPnl, "AddItem");
 
-        cardLayout.show(tab, "start");
+        cardLayout.show(tab, "Start");
 
         add(tab, BorderLayout.CENTER);
         setVisible(true);

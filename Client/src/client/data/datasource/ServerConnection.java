@@ -1,7 +1,7 @@
 package client.data.datasource;
 
+import client.data.dao.IngredientModel;
 import client.data.dao.ProductModel;
-import client.data.datasource.callback.SelectItemCallback;
 import client.data.datasource.callback.ServerConnectionCallback;
 import client.util.JsonUtil;
 import com.google.gson.JsonArray;
@@ -59,7 +59,7 @@ public class ServerConnection {
         }).start();
     }
 
-    public void selectItem(ProductModel item, SelectItemCallback callback) {
+    public void selectItem(ProductModel item, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("select", item.PrCode);
         send(jsonObject.toString());
@@ -77,11 +77,10 @@ public class ServerConnection {
                 e.printStackTrace();
             }
 
-        }
-        ).start();
+        }).start();
     }
 
-    public void minusItem(ProductModel item, SelectItemCallback callback) {
+    public void minusItem(ProductModel item, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("minus", item.PrCode);
         send(jsonObject.toString());
@@ -103,7 +102,7 @@ public class ServerConnection {
         ).start();
     }
 
-    public void exitItem(ProductModel item, int itemCount, SelectItemCallback callback) {
+    public void exitItem(ProductModel item, int itemCount, ServerConnectionCallback.SelectItemCallback callback) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("exit", item.PrCode);
         jsonObject.addProperty("count", itemCount);
@@ -118,6 +117,59 @@ public class ServerConnection {
                     vector.add(model);
                 }
                 callback.success(vector);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        ).start();
+    }
+
+    public void buyItem(int total) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("buy", total);
+        send(jsonObject.toString());
+    }
+
+
+    public void totalMoney(ServerConnectionCallback.TotalMoneyCallback callback) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("total", 0);
+        send(jsonObject.toString());
+        new Thread(() -> {
+            try {
+                String data = reader.readLine();
+                JsonObject object = (JsonObject) parser.parse(data);
+                int total = object.get("total").getAsInt();
+                String arr = object.get("array").getAsString();
+                JsonArray array = (JsonArray) parser.parse(arr);
+                Vector<ProductModel> vector = new Vector<>();
+                for (JsonElement obj : array) {
+                    ProductModel model = JsonUtil.INSTANCE.getProductModel(obj);
+                    vector.add(model);
+                }
+                callback.success(vector, total);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+    }
+
+    public void currentIngredients(ServerConnectionCallback.GetTableCallback callback) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("ingredient", 0);
+        send(jsonObject.toString());
+        new Thread(() -> {
+            try {
+                String data = reader.readLine();
+                JsonArray array = (JsonArray) parser.parse(data);
+                Vector<IngredientModel> vector = new Vector<>();
+                for (JsonElement object : array) {
+                    IngredientModel model = JsonUtil.INSTANCE.getIngredientModel(object);
+                    vector.add(model);
+                }
+                callback.IgSuccess(vector);
             } catch (IOException e) {
                 e.printStackTrace();
             }
